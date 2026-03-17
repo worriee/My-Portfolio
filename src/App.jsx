@@ -17,6 +17,11 @@ import xml from './assets/xml.png';
 import css from './assets/css.png';
 import react from './assets/react.png';
 import tailwind from './assets/tailwind.png';
+import git from './assets/git.png';
+import androidstudio from './assets/androidstudio.png';
+import csharp from './assets/csharp.png';
+import vscode from './assets/vscode.png';
+
 
 
 export default function App() {
@@ -185,8 +190,28 @@ export default function App() {
           <h1 className="text-black font-bold font-serif text-4xl md:text-4xl border-b-2 border-black">SKILLS & TECHNOLOGIES</h1>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 mt-10 mx-4 md:mx-0">
             <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+              <img src={vscode} alt="Visual Studio Code" className="h-16 w-16 object-contain mb-3" />
+              <span className="font-bold text-lg text-black">Visual Studio Code</span>
+            </div>
+            <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+              <img src={androidstudio} alt="Android Studio" className="h-16 w-16 object-contain mb-3" />
+              <span className="font-bold text-lg text-black">Android Studio</span>
+            </div>
+            <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+              <img src={github} alt="Github" className="h-16 w-16 object-contain mb-3" />
+              <span className="font-bold text-lg text-black">Github</span>
+            </div>
+            <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+              <img src={git} alt="Git" className="h-16 w-16 object-contain mb-3" />
+              <span className="font-bold text-lg text-black">Git</span>
+            </div>
+            <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
               <img src={html} alt="HTML" className="h-16 w-16 object-contain mb-3" />
               <span className="font-bold text-lg text-black">HTML</span>
+            </div>
+            <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+              <img src={xml} alt="XML" className="h-16 w-16 object-contain mb-3" />
+              <span className="font-bold text-lg text-black">XML</span>
             </div>
             <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
               <img src={css} alt="CSS" className="h-16 w-16 object-contain mb-3" />
@@ -213,8 +238,8 @@ export default function App() {
               <span className="font-bold text-lg text-black">C</span>
             </div>
             <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-              <img src={xml} alt="XML" className="h-16 w-16 object-contain mb-3" />
-              <span className="font-bold text-lg text-black">XML</span>
+              <img src={csharp} alt="C#" className="h-16 w-16 object-contain mb-3" />
+              <span className="font-bold text-lg text-black">C#</span>
             </div>
           </div>
         </div>
