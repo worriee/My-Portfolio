@@ -259,6 +259,19 @@ export default function App() {
                 View Repository
               </a>
             </div>
+
+            <div className="relative bg-white p-6 rounded-xl shadow-md border border-gray-200 hover:shadow-xl transition-all duration-300">
+              <span className="absolute top-6 right-6 text-gray-500 font-bold text-sm tracking-wider">JAVASCRIPT</span>
+              <span className="absolute top-6 right-6 text-gray-500 font-bold text-sm tracking-wider">REACT</span>
+              <span className="absolute top-6 right-6 text-gray-500 font-bold text-sm tracking-wider">PWA</span>
+              <h2 className="text-2xl font-bold text-black border-b border-gray-300 pb-2 mb-4 pr-12 w-fit">Web Loader</h2>
+              <p className="text-gray-700 text-base mb-6">
+                A transaction management platform built with React, Vercel, and Supabase. The application features a public panel for users to submit load/promo transactions with receipt uploads and a secure, role-based Admin Dashboard for order fulfillment. 
+              </p>
+              <a href="https://github.com/worriee/web-loaderbyjimzxworrie" target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-4 py-2 bg-transparent text-black border border-black rounded-md hover:bg-gray-200 transition duration-300 font-bold">
+                View Repository
+              </a>
+            </div>
           </div>
         </div>
         )}
