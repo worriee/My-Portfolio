@@ -261,9 +261,11 @@ export default function App() {
             </div>
 
             <div className="relative bg-white p-6 rounded-xl shadow-md border border-gray-200 hover:shadow-xl transition-all duration-300">
-              <span className="absolute top-6 right-6 text-gray-500 font-bold text-sm tracking-wider">JAVASCRIPT</span>
-              <span className="absolute top-6 right-6 text-gray-500 font-bold text-sm tracking-wider">REACT</span>
-              <span className="absolute top-6 right-6 text-gray-500 font-bold text-sm tracking-wider">PWA</span>
+              <div className="absolute top-6 right-6 flex gap-2">
+                <span className="text-gray-500 font-bold text-sm tracking-wider">JAVASCRIPT</span>
+                <span className="text-gray-500 font-bold text-sm tracking-wider">REACT</span>
+                <span className="text-gray-500 font-bold text-sm tracking-wider">PWA</span>
+              </div>
               <h2 className="text-2xl font-bold text-black border-b border-gray-300 pb-2 mb-4 pr-12 w-fit">Web Loader</h2>
               <p className="text-gray-700 text-base mb-6">
                 A transaction management platform built with React, Vercel, and Supabase. The application features a public panel for users to submit load/promo transactions with receipt uploads and a secure, role-based Admin Dashboard for order fulfillment. 
