@@ -250,7 +250,10 @@ export default function App() {
           <h1 className="text-black font-bold font-serif text-4xl md:text-4xl border-b-2 border-black">PROJECTS</h1>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10 mx-4 md:mx-0">
             <div className="relative bg-white p-6 rounded-xl shadow-md border border-gray-200 hover:shadow-xl transition-all duration-300">
-              <span className="absolute top-6 right-6 text-gray-500 font-bold text-sm tracking-wider">JAVA</span>
+              <div className="absolute top-6 right-6 flex gap-2">
+                <span className="text-gray-500 font-bold text-sm tracking-wider">JAVA</span>
+                <span className="text-gray-500 font-bold text-sm tracking-wider">XML</span>
+              </div>
               <h2 className="text-2xl font-bold text-black border-b border-gray-300 pb-2 mb-4 pr-12 w-fit">AI Notes</h2>
               <p className="text-gray-700 text-base mb-6">
                 A smart note-taking application powered by Gemini AI. Features include automatic summarization from a YouTube Video, and an intuitive user interface designed to maximize productivity.
