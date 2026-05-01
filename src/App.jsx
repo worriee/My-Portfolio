@@ -4,7 +4,6 @@ import myPic2 from './assets/my-picc.jpg';
 import document from './assets/document.png';
 import emaillogo from './assets/email-logo.png';
 import phonelogo from './assets/phone-logo.png';
-import menu from './assets/menu.png';
 import arrow from './assets/right-arrow.png';
 import fb from './assets/fb-logo.png';
 import github from './assets/github.png';
@@ -94,8 +93,21 @@ export default function App() {
   return (
     <div className="relative min-h-screen md:flex">
       <div className="md:hidden fixed top-4 left-4 z-50">
-        <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="p-2 bg-white rounded-md shadow-lg border border-gray-300 transition duration-300 hover:bg-gray-100">
-          <img src={menu} alt="Menu" className="h-8 w-8 bg-white" />
+        <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="p-2 bg-transparent rounded-md shadow-lg border border-black-300 transition duration-300">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="h-8 w-8"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
         </button>
       </div>
 
@@ -249,12 +261,13 @@ export default function App() {
         <div id="projects" className="mt-16 md:mt-0 text-left pb-30">
           <h1 className="text-black font-bold font-serif text-4xl md:text-4xl border-b-2 border-black">PROJECTS</h1>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10 mx-4 md:mx-0">
+            
             <div className="relative bg-white p-6 rounded-xl shadow-md border border-gray-200 hover:shadow-xl transition-all duration-300">
-              <div className="absolute top-6 right-6 flex gap-2">
+              <div className="flex gap-2 mb-2 md:absolute md:top-6 md:right-6 md:mb-0">
                 <span className="text-gray-500 font-bold text-sm tracking-wider">JAVA</span>
                 <span className="text-gray-500 font-bold text-sm tracking-wider">XML</span>
               </div>
-              <h2 className="text-2xl font-bold text-black border-b border-gray-300 pb-2 mb-4 pr-12 w-fit">AI Notes</h2>
+              <h2 className="text-2xl font-bold text-black border-b border-gray-300 pb-2 mb-4 md:pr-12 w-fit">AI Notes</h2>
               <p className="text-gray-700 text-base mb-6">
                 A smart note-taking application powered by Gemini AI. Features include automatic summarization from a YouTube Video, and an intuitive user interface designed to maximize productivity.
               </p>
@@ -264,12 +277,12 @@ export default function App() {
             </div>
 
             <div className="relative bg-white p-6 rounded-xl shadow-md border border-gray-200 hover:shadow-xl transition-all duration-300">
-              <div className="absolute top-6 right-6 flex gap-2">
+              <div className="flex gap-2 mb-2 md:absolute md:top-6 md:right-6 md:mb-0">
                 <span className="text-gray-500 font-bold text-sm tracking-wider">JAVASCRIPT</span>
                 <span className="text-gray-500 font-bold text-sm tracking-wider">REACT</span>
                 <span className="text-gray-500 font-bold text-sm tracking-wider">PWA</span>
               </div>
-              <h2 className="text-2xl font-bold text-black border-b border-gray-300 pb-2 mb-4 pr-12 w-fit">Web Loader</h2>
+              <h2 className="text-2xl font-bold text-black border-b border-gray-300 pb-2 mb-4 md:pr-12 w-fit">Web Loader</h2>
               <p className="text-gray-700 text-base mb-6">
                 A transaction management platform built with React, Vercel, and Supabase. The application features a public panel for users to submit load/promo transactions with receipt uploads and a secure, role-based Admin Dashboard for order fulfillment. 
               </p>
