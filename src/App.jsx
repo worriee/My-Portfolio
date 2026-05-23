@@ -20,6 +20,9 @@ import git from './assets/git.png';
 import androidstudio from './assets/androidstudio.png';
 import csharp from './assets/csharp.png';
 import vscode from './assets/vscode.png';
+import linkedin from './assets/linkedin.png';
+import jobstreet from './assets/jobstreet.png';
+import onlinejobsph from './assets/onlinejobsph.png';
 
 
 
@@ -162,8 +165,8 @@ export default function App() {
             <a href="https://github.com/worriee" target="_blank" rel="noopener noreferrer">
               <img src={github} alt="GitHub" className="w-6 h-6 hover:scale-110 transition-transform cursor-pointer" />
             </a>
-            <a href="https://www.instagram.com/itz.jmworrie/" target="_blank" rel="noopener noreferrer">
-              <img src={insta} alt="Instagram" className="w-6 h-6 hover:scale-110 transition-transform cursor-pointer" />
+            <a href="https://www.linkedin.com/in/julry-mahilum-91a47240a" target="_blank" rel="noopener noreferrer">
+              <img src={linkedin} alt="LinkedIn" className="w-6 h-6 hover:scale-110 transition-transform cursor-pointer" />
             </a>
           </div>
           <p className="text-sm text-gray-700 text-center">
@@ -313,15 +316,33 @@ export default function App() {
               </a>
             </div>
             <div className="flex flex-row items-center space-x-6">
+              <img src={insta} alt="Instagram Logo" className="h-10 w-10 md:h-12 md:w-12 object-contain" />
+              <a href="https://www.instagram.com/itz.jmworrie/" target="_blank" rel="noopener noreferrer" className="text-black font-bold text-lg md:text-xl hover:underline">
+                Julry M.
+              </a>
+            </div>
+            <div className="flex flex-row items-center space-x-6">
               <img src={github} alt="GitHub Logo" className="h-10 w-10 md:h-12 md:w-12 object-contain" />
               <a href="https://github.com/worriee" target="_blank" rel="noopener noreferrer" className="text-black font-bold text-lg md:text-xl hover:underline">
                 Worriee
               </a>
             </div>
             <div className="flex flex-row items-center space-x-6">
-              <img src={insta} alt="Instagram Logo" className="h-10 w-10 md:h-12 md:w-12 object-contain" />
-              <a href="https://www.instagram.com/itz.jmworrie/" target="_blank" rel="noopener noreferrer" className="text-black font-bold text-lg md:text-xl hover:underline">
-                Julry M.
+              <img src={jobstreet} alt="Jobstreet Logo" className="h-10 w-10 md:h-12 md:w-12 object-contain" />
+              <a href="https://ph.jobstreet.com/profiles/julry-mahilum-nrpn26H1WV" target="_blank" rel="noopener noreferrer" className="text-black font-bold text-lg md:text-xl hover:underline">
+                Julry Mahilum
+              </a>
+            </div>
+            <div className="flex flex-row items-center space-x-6">
+              <img src={onlinejobsph} alt="Online Jobs Ph Logo" className="h-10 w-10 md:h-12 md:w-12 object-contain" />
+              <a href="https://v2.onlinejobs.ph/jobseekers/info/5017643" target="_blank" rel="noopener noreferrer" className="text-black font-bold text-lg md:text-xl hover:underline">
+                Julry Mahilum
+              </a>
+            </div>
+            <div className="flex flex-row items-center space-x-6">
+              <img src={linkedin} alt="Online Jobs Ph Logo" className="h-10 w-10 md:h-12 md:w-12 object-contain" />
+              <a href="https://www.linkedin.com/in/julry-mahilum-91a47240a" target="_blank" rel="noopener noreferrer" className="text-black font-bold text-lg md:text-xl hover:underline">
+                Julry Mahilum
               </a>
             </div>
           </div>
