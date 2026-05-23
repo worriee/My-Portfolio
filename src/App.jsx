@@ -15,6 +15,7 @@ import html from './assets/html.png';
 import xml from './assets/xml.png';
 import css from './assets/css.png';
 import react from './assets/react.png';
+import nodejs from './assets/nodejs.png';
 import tailwind from './assets/tailwind.png';
 import git from './assets/git.png';
 import androidstudio from './assets/androidstudio.png';
@@ -237,8 +238,12 @@ export default function App() {
               <span className="font-bold text-lg text-black">JavaScript</span>
             </div>
             <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-              <img src={react} alt="React" className="h-16 w-16 object-contain mb-3" />
-              <span className="font-bold text-lg text-black">React</span>
+              <img src={react} alt="React.js" className="h-16 w-16 object-contain mb-3" />
+              <span className="font-bold text-lg text-black">React.js</span>
+            </div>
+            <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+              <img src={nodejs} alt="Node.js" className="h-16 w-16 object-contain mb-3" />
+              <span className="font-bold text-lg text-black">Node.js</span>
             </div>
             <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
               <img src={tailwind} alt="Tailwind CSS" className="h-16 w-16 object-contain mb-3" />
