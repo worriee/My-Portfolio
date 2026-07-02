@@ -1,16 +1,34 @@
-# React + Vite
+# Julry Mahilum
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> "No audience, no applause — just the work. I didn't stop, and I won't."
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## My Journey
 
-## React Compiler
+- Learning to code without a roadmap taught me how to figure things out on my own
+- Building projects alone builds patience and problem-solving more than any tutorial
+- Consistency > motivation
+- Every project is proof that I didn't wait for permission to start
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Recent Projects
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### AI Notes
+
+A simple note app. Can convert YT Video to Notes.
+
+**Tech:** Java, Android SDK, Gemini AI, Node.js
+
+### Web Loader
+
+Transaction Recorder.
+
+**Tech:** React, Vite, Tailwind CSS, Supabase, Vercel
+
+### TUON AI
+
+Gemini inspired guided learning. Make notes, Generate quiz. Built-in AI models. OpenAI compatible.
+
+**Tech:** React, Vite, Tailwind CSS, Express.js, Supabase, Vercel

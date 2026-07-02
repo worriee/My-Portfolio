@@ -1,37 +1,35 @@
-import { useState, useEffect, useRef } from 'react';
-import myPic from './assets/my-pic.png';
-import myPic2 from './assets/my-picc.jpg';
-import document from './assets/document.png';
-import emaillogo from './assets/email-logo.png';
-import phonelogo from './assets/phone-logo.png';
-import arrow from './assets/right-arrow.png';
-import fb from './assets/fb-logo.png';
-import github from './assets/github.png';
-import insta from './assets/instagram.png';
-import js from './assets/js.png';
-import java from './assets/java.png';
-import c from './assets/c.png';
-import html from './assets/html.png';
-import xml from './assets/xml.png';
-import css from './assets/css.png';
-import react from './assets/react.png';
-import nodejs from './assets/nodejs.png';
-import tailwind from './assets/tailwind.png';
-import git from './assets/git.png';
-import androidstudio from './assets/androidstudio.png';
-import csharp from './assets/csharp.png';
-import vscode from './assets/vscode.png';
-import linkedin from './assets/linkedin.png';
-import jobstreet from './assets/jobstreet.png';
-import onlinejobsph from './assets/onlinejobsph.png';
-
-
+import { useState, useEffect, useRef } from "react";
+import myPic from "./assets/my-pic.png";
+import myPic2 from "./assets/my-picc.jpg";
+import document from "./assets/document.png";
+import emaillogo from "./assets/email-logo.png";
+import phonelogo from "./assets/phone-logo.png";
+import arrow from "./assets/right-arrow.png";
+import fb from "./assets/fb-logo.png";
+import github from "./assets/github.png";
+import insta from "./assets/instagram.png";
+import js from "./assets/js.png";
+import java from "./assets/java.png";
+import c from "./assets/c.png";
+import html from "./assets/html.png";
+import xml from "./assets/xml.png";
+import css from "./assets/css.png";
+import react from "./assets/react.png";
+import nodejs from "./assets/nodejs.png";
+import tailwind from "./assets/tailwind.png";
+import git from "./assets/git.png";
+import androidstudio from "./assets/androidstudio.png";
+import csharp from "./assets/csharp.png";
+import vscode from "./assets/vscode.png";
+import linkedin from "./assets/linkedin.png";
+import jobstreet from "./assets/jobstreet.png";
+import onlinejobsph from "./assets/onlinejobsph.png";
 
 export default function App() {
-  const [activeLink, setActiveLink] = useState('#home');
+  const [activeLink, setActiveLink] = useState("#home");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [homeText1, setHomeText1] = useState('');
-  const [homeText2, setHomeText2] = useState('');
+  const [homeText1, setHomeText1] = useState("");
+  const [homeText2, setHomeText2] = useState("");
   const contentRef = useRef(null);
 
   useEffect(() => {
@@ -39,10 +37,10 @@ export default function App() {
     if (!content) return;
 
     const handleScroll = () => {
-      const sections = ['home', 'about', 'skills', 'projects', 'contact'];
+      const sections = ["home", "about", "skills", "projects", "contact"];
       const scrollPosition = content.scrollTop + 150;
 
-      let currentSection = '#home';
+      let currentSection = "#home";
       for (const id of sections) {
         const section = document.getElementById(id);
         if (section) {
@@ -54,16 +52,16 @@ export default function App() {
       setActiveLink(currentSection);
     };
 
-    content.addEventListener('scroll', handleScroll);
+    content.addEventListener("scroll", handleScroll);
     return () => {
-      content.removeEventListener('scroll', handleScroll);
+      content.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   useEffect(() => {
-    if (activeLink === '#home') {
-      setHomeText1('');
-      setHomeText2('');
+    if (activeLink === "#home") {
+      setHomeText1("");
+      setHomeText2("");
       const text1 = "Hi, I'm Julry.";
       const text2 = "A beginner Web and App developer.";
       let i = 0;
@@ -97,7 +95,10 @@ export default function App() {
   return (
     <div className="relative min-h-screen md:flex">
       <div className="md:hidden fixed top-4 left-4 z-50">
-        <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="p-2 bg-transparent rounded-md shadow-lg border border-black-300 transition duration-300">
+        <button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="p-2 bg-transparent rounded-md shadow-lg border border-black-300 transition duration-300"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -123,36 +124,79 @@ export default function App() {
         ></div>
       )}
 
-      <div className={`fixed top-0 left-0 z-50 md:relative w-2/3 md:w-1/4 ${isMenuOpen ? 'flex' : 'hidden md:flex'} flex-col h-screen bg-gray-100 shadow-2xl md:shadow-none`}>
+      <div
+        className={`fixed top-0 left-0 z-50 md:relative w-2/3 md:w-1/4 ${isMenuOpen ? "flex" : "hidden md:flex"} flex-col h-screen bg-gray-100 shadow-2xl md:shadow-none`}
+      >
         <div className="flex-grow overflow-y-auto min-h-0 p-8">
-          <img src={myPic} alt="My Pic" className="h-32 w-32 md:h-28 md:w-28 object-cover" />
+          <img
+            src={myPic}
+            alt="My Pic"
+            className="h-32 w-32 md:h-28 md:w-28 object-cover"
+          />
           <div className="mt-10">
-            <h3 className="text-black font-bold font-serif text-2xl md:text-2xl mt-2 md:mt-5">Julry Mahilum</h3>
+            <h3 className="text-black font-bold font-serif text-2xl md:text-2xl mt-2 md:mt-5">
+              Julry Mahilum
+            </h3>
             <h3 className="mt-3">Web & App Developer.</h3>
           </div>
           <ul className="mt-10 space-y-5">
             <li>
-              <a href="#home" onClick={() => { setActiveLink('#home'); setIsMenuOpen(false); }} className={`text-lg ${activeLink === '#home' ? 'border-b-2 border-black' : ''}`}>
+              <a
+                href="#home"
+                onClick={() => {
+                  setActiveLink("#home");
+                  setIsMenuOpen(false);
+                }}
+                className={`text-lg ${activeLink === "#home" ? "border-b-2 border-black" : ""}`}
+              >
                 Home
               </a>
             </li>
             <li>
-              <a href="#about" onClick={() => { setActiveLink('#about'); setIsMenuOpen(false); }} className={`text-lg ${activeLink === '#about' ? 'border-b-2 border-black' : ''}`}>
+              <a
+                href="#about"
+                onClick={() => {
+                  setActiveLink("#about");
+                  setIsMenuOpen(false);
+                }}
+                className={`text-lg ${activeLink === "#about" ? "border-b-2 border-black" : ""}`}
+              >
                 About
               </a>
             </li>
             <li>
-              <a href="#skills" onClick={() => { setActiveLink('#skills'); setIsMenuOpen(false); }} className={`text-lg ${activeLink === '#skills' ? 'border-b-2 border-black' : ''}`}>
+              <a
+                href="#skills"
+                onClick={() => {
+                  setActiveLink("#skills");
+                  setIsMenuOpen(false);
+                }}
+                className={`text-lg ${activeLink === "#skills" ? "border-b-2 border-black" : ""}`}
+              >
                 Skills
               </a>
             </li>
             <li>
-              <a href="#projects" onClick={() => { setActiveLink('#projects'); setIsMenuOpen(false); }} className={`text-lg ${activeLink === '#projects' ? 'border-b-2 border-black' : ''}`}>
+              <a
+                href="#projects"
+                onClick={() => {
+                  setActiveLink("#projects");
+                  setIsMenuOpen(false);
+                }}
+                className={`text-lg ${activeLink === "#projects" ? "border-b-2 border-black" : ""}`}
+              >
                 Projects
               </a>
             </li>
             <li>
-              <a href="#contact" onClick={() => { setActiveLink('#contact'); setIsMenuOpen(false); }} className={`text-lg ${activeLink === '#contact' ? 'border-b-2 border-black' : ''}`}>
+              <a
+                href="#contact"
+                onClick={() => {
+                  setActiveLink("#contact");
+                  setIsMenuOpen(false);
+                }}
+                className={`text-lg ${activeLink === "#contact" ? "border-b-2 border-black" : ""}`}
+              >
                 Contacts
               </a>
             </li>
@@ -160,200 +204,445 @@ export default function App() {
         </div>
         <div className="mt-auto bg-gray-300 px-8 pb-8 pt-6">
           <div className="flex justify-center space-x-6 mb-4">
-            <a href="https://web.facebook.com/itzworrie" target="_blank" rel="noopener noreferrer">
-              <img src={fb} alt="Facebook" className="w-6 h-6 hover:scale-110 transition-transform cursor-pointer" />
+            <a
+              href="https://web.facebook.com/itzworrie"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src={fb}
+                alt="Facebook"
+                className="w-6 h-6 hover:scale-110 transition-transform cursor-pointer"
+              />
             </a>
-            <a href="https://github.com/worriee" target="_blank" rel="noopener noreferrer">
-              <img src={github} alt="GitHub" className="w-6 h-6 hover:scale-110 transition-transform cursor-pointer" />
+            <a
+              href="https://github.com/worriee"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src={github}
+                alt="GitHub"
+                className="w-6 h-6 hover:scale-110 transition-transform cursor-pointer"
+              />
             </a>
-            <a href="https://www.linkedin.com/in/julry-mahilum-91a47240a" target="_blank" rel="noopener noreferrer">
-              <img src={linkedin} alt="LinkedIn" className="w-6 h-6 hover:scale-110 transition-transform cursor-pointer" />
+            <a
+              href="https://www.linkedin.com/in/julry-mahilum-91a47240a"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src={linkedin}
+                alt="LinkedIn"
+                className="w-6 h-6 hover:scale-110 transition-transform cursor-pointer"
+              />
             </a>
           </div>
           <p className="text-sm text-gray-700 text-center">
-            &copy; {new Date().getFullYear()} Julry Mahilum. <br /> All rights reserved.
+            &copy; {new Date().getFullYear()} Julry Mahilum. <br /> All rights
+            reserved.
           </p>
         </div>
       </div>
 
-      <div ref={contentRef} className="w-full md:w-3/4 p-8 h-screen overflow-y-auto">
-        {activeLink === '#home' && (
-        <div id="home" className="h-screen -m-8 bg-cover bg-center flex flex-col justify-center items-center" style={{ backgroundImage: `url(${myPic2})`}}>
-          <h2 className="text-gray-300 [-webkit-text-stroke:1px_black] text-2xl md:text-3xl font-bold bg-opacity-50 px-4 py-2 rounded min-h-[3rem] md:min-h-[3.5rem] flex items-center text-center">{homeText1 || '\u00A0'}</h2>
-          <h2 className="text-gray-300 [-webkit-text-stroke:1px_black] text-2xl md:text-3xl font-bold bg-opacity-50 px-4 py-2 rounded min-h-[3rem] md:min-h-[3.5rem] flex items-center text-center">{homeText2 || '\u00A0'}</h2>
-          <div className="flex flex-row mt-6 space-x-4">
-            <button onClick={() => setActiveLink('#about')} className="flex items-center px-4 py-2 bg-transparent text-black border border-black rounded-md hover:bg-gray-300 hover:text-black transition duration-300 [-webkit-text-stroke:1px_black]">
-              About Me
-              <img src={arrow} alt="Arrow" className="w-5 h-5 ml-2" />
-            </button>
-            <a href="/Mahilum_Resume.pdf" download className="flex items-center px-4 py-2 bg-transparent text-black border border-black rounded-md hover:bg-gray-300 hover:text-black transition duration-300 [-webkit-text-stroke:1px_black]">
-              <img src={document} alt="Document" className="w-5 h-5 mr-2" />
-              Download Resume
-            </a>
-          </div>
-        </div>
-        )}
-
-        {activeLink === '#about' && (
-        <div id="about" className="mt-16 md:mt-10 text-left">
-          <h1 className="text-black font-bold font-serif text-4xl md:text-4xl border-b-2 border-black">ABOUT ME</h1>
-          <h2 className="text-xl md:text-2xl mx-4 md:mx-10 p-4 md:p-10">Since Pandemic (2020) I'm at home (quarantine) bored then suddenly get interested about vpn. I used vpn that time for "Free Internet" cause those were the hard times and my parents currently have no work. Also I'm struggling to access the internet that's why I used vpn so I can access the internet free and unlimited. Then I came up of an idea of making my own vpn application. From that moment on I started learning App Development first then ended up learning Web Development as well in college.</h2>
-        </div>
-        )}
-
-        {activeLink === '#skills' && (
-        <div id="skills" className="mt-16 md:mt-0 text-left">
-          <h1 className="text-black font-bold font-serif text-4xl md:text-4xl border-b-2 border-black">SKILLS & TECHNOLOGIES</h1>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 mt-10 mx-4 md:mx-0">
-            <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-              <img src={vscode} alt="Visual Studio Code" className="h-16 w-16 object-contain mb-3" />
-              <span className="font-bold text-lg text-black">Visual Studio Code</span>
-            </div>
-            <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-              <img src={androidstudio} alt="Android Studio" className="h-16 w-16 object-contain mb-3" />
-              <span className="font-bold text-lg text-black">Android Studio</span>
-            </div>
-            <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-              <img src={github} alt="Github" className="h-16 w-16 object-contain mb-3" />
-              <span className="font-bold text-lg text-black">Github</span>
-            </div>
-            <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-              <img src={git} alt="Git" className="h-16 w-16 object-contain mb-3" />
-              <span className="font-bold text-lg text-black">Git</span>
-            </div>
-            <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-              <img src={html} alt="HTML" className="h-16 w-16 object-contain mb-3" />
-              <span className="font-bold text-lg text-black">HTML</span>
-            </div>
-            <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-              <img src={xml} alt="XML" className="h-16 w-16 object-contain mb-3" />
-              <span className="font-bold text-lg text-black">XML</span>
-            </div>
-            <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-              <img src={css} alt="CSS" className="h-16 w-16 object-contain mb-3" />
-              <span className="font-bold text-lg text-black">CSS</span>
-            </div>
-            <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-              <img src={js} alt="JavaScript" className="h-16 w-16 object-contain mb-3" />
-              <span className="font-bold text-lg text-black">JavaScript</span>
-            </div>
-            <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-              <img src={react} alt="React.js" className="h-16 w-16 object-contain mb-3" />
-              <span className="font-bold text-lg text-black">React.js</span>
-            </div>
-            <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-              <img src={nodejs} alt="Node.js" className="h-16 w-16 object-contain mb-3" />
-              <span className="font-bold text-lg text-black">Node.js</span>
-            </div>
-            <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-              <img src={tailwind} alt="Tailwind CSS" className="h-16 w-16 object-contain mb-3" />
-              <span className="font-bold text-lg text-black">Tailwind</span>
-            </div>
-            <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-              <img src={java} alt="Java" className="h-16 w-16 object-contain mb-3" />
-              <span className="font-bold text-lg text-black">Java</span>
-            </div>
-            <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-              <img src={c} alt="C" className="h-16 w-16 object-contain mb-3" />
-              <span className="font-bold text-lg text-black">C</span>
-            </div>
-            <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-              <img src={csharp} alt="C#" className="h-16 w-16 object-contain mb-3" />
-              <span className="font-bold text-lg text-black">C#</span>
+      <div
+        ref={contentRef}
+        className="w-full md:w-3/4 p-8 h-screen overflow-y-auto"
+      >
+        {activeLink === "#home" && (
+          <div
+            id="home"
+            className="h-screen -m-8 bg-cover bg-center flex flex-col justify-center items-center"
+            style={{ backgroundImage: `url(${myPic2})` }}
+          >
+            <h2 className="text-gray-300 [-webkit-text-stroke:1px_black] text-2xl md:text-3xl font-bold bg-opacity-50 px-4 py-2 rounded min-h-[3rem] md:min-h-[3.5rem] flex items-center text-center">
+              {homeText1 || "\u00A0"}
+            </h2>
+            <h2 className="text-gray-300 [-webkit-text-stroke:1px_black] text-2xl md:text-3xl font-bold bg-opacity-50 px-4 py-2 rounded min-h-[3rem] md:min-h-[3.5rem] flex items-center text-center">
+              {homeText2 || "\u00A0"}
+            </h2>
+            <div className="flex flex-row mt-6 space-x-4">
+              <button
+                onClick={() => setActiveLink("#about")}
+                className="flex items-center px-4 py-2 bg-transparent text-black border border-black rounded-md hover:bg-gray-300 hover:text-black transition duration-300 [-webkit-text-stroke:1px_black]"
+              >
+                About Me
+                <img src={arrow} alt="Arrow" className="w-5 h-5 ml-2" />
+              </button>
+              <a
+                href="/Mahilum_Resume.pdf"
+                download
+                className="flex items-center px-4 py-2 bg-transparent text-black border border-black rounded-md hover:bg-gray-300 hover:text-black transition duration-300 [-webkit-text-stroke:1px_black]"
+              >
+                <img src={document} alt="Document" className="w-5 h-5 mr-2" />
+                Download Resume
+              </a>
             </div>
           </div>
-        </div>
         )}
 
-        {activeLink === '#projects' && (
-        <div id="projects" className="mt-16 md:mt-0 text-left pb-30">
-          <h1 className="text-black font-bold font-serif text-4xl md:text-4xl border-b-2 border-black">PROJECTS</h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10 mx-4 md:mx-0">
-            
-            <div className="relative bg-white p-6 rounded-xl shadow-md border border-gray-200 hover:shadow-xl transition-all duration-300">
-              <div className="flex gap-2 mb-2 md:absolute md:top-6 md:right-6 md:mb-0">
-                <span className="text-gray-500 font-bold text-sm tracking-wider">JAVA</span>
-                <span className="text-gray-500 font-bold text-sm tracking-wider">XML</span>
+        {activeLink === "#about" && (
+          <div id="about" className="mt-16 md:mt-10 text-left">
+            <h1 className="text-black font-bold font-serif text-4xl md:text-4xl border-b-2 border-black">
+              ABOUT ME
+            </h1>
+            <h2 className="text-xl md:text-2xl mx-4 md:mx-10 p-4 md:p-10">
+              Since Pandemic (2020) I suddenly get interested about vpn. I used
+              vpn that time for "Free Internet" cause those were the hard times
+              like everyone has no work. I'm also struggling to access the
+              internet that's why I used vpn then came up of a random idea of
+              making my own vpn application. From that moment on I started
+              learning App Development first then ended up learning Web
+              Development as well in college.
+            </h2>
+          </div>
+        )}
+
+        {activeLink === "#skills" && (
+          <div id="skills" className="mt-16 md:mt-0 text-left">
+            <h1 className="text-black font-bold font-serif text-4xl md:text-4xl border-b-2 border-black">
+              SKILLS & TECHNOLOGIES
+            </h1>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 mt-10 mx-4 md:mx-0">
+              <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <img
+                  src={vscode}
+                  alt="Visual Studio Code"
+                  className="h-16 w-16 object-contain mb-3"
+                />
+                <span className="font-bold text-lg text-black">
+                  Visual Studio Code
+                </span>
               </div>
-              <h2 className="text-2xl font-bold text-black border-b border-gray-300 pb-2 mb-4 md:pr-12 w-fit">AI Notes</h2>
-              <p className="text-gray-700 text-base mb-6">
-                A smart note-taking application powered by Gemini AI. Features include automatic summarization from a YouTube Video, and an intuitive user interface designed to maximize productivity.
-              </p>
-              <a href="https://github.com/worriee/SimpleNoteApp" target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-4 py-2 bg-transparent text-black border border-black rounded-md hover:bg-gray-200 transition duration-300 font-bold">
-                View Repository
-              </a>
-            </div>
-
-            <div className="relative bg-white p-6 rounded-xl shadow-md border border-gray-200 hover:shadow-xl transition-all duration-300">
-              <div className="flex gap-2 mb-2 md:absolute md:top-6 md:right-6 md:mb-0">
-                <span className="text-gray-500 font-bold text-sm tracking-wider">JAVASCRIPT</span>
-                <span className="text-gray-500 font-bold text-sm tracking-wider">REACT</span>
-                <span className="text-gray-500 font-bold text-sm tracking-wider">PWA</span>
+              <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <img
+                  src={androidstudio}
+                  alt="Android Studio"
+                  className="h-16 w-16 object-contain mb-3"
+                />
+                <span className="font-bold text-lg text-black">
+                  Android Studio
+                </span>
               </div>
-              <h2 className="text-2xl font-bold text-black border-b border-gray-300 pb-2 mb-4 md:pr-12 w-fit">Web Loader</h2>
-              <p className="text-gray-700 text-base mb-6">
-                A transaction management platform built with React, Vercel, and Supabase. The application features a public panel for users to submit load/promo transactions with receipt uploads and a secure, role-based Admin Dashboard for order fulfillment. 
-              </p>
-              <a href="https://github.com/worriee/web-loaderbyjimzxworrie" target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-4 py-2 bg-transparent text-black border border-black rounded-md hover:bg-gray-200 transition duration-300 font-bold">
-                View Repository
-              </a>
+              <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <img
+                  src={github}
+                  alt="Github"
+                  className="h-16 w-16 object-contain mb-3"
+                />
+                <span className="font-bold text-lg text-black">Github</span>
+              </div>
+              <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <img
+                  src={git}
+                  alt="Git"
+                  className="h-16 w-16 object-contain mb-3"
+                />
+                <span className="font-bold text-lg text-black">Git</span>
+              </div>
+              <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <img
+                  src={html}
+                  alt="HTML"
+                  className="h-16 w-16 object-contain mb-3"
+                />
+                <span className="font-bold text-lg text-black">HTML</span>
+              </div>
+              <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <img
+                  src={xml}
+                  alt="XML"
+                  className="h-16 w-16 object-contain mb-3"
+                />
+                <span className="font-bold text-lg text-black">XML</span>
+              </div>
+              <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <img
+                  src={css}
+                  alt="CSS"
+                  className="h-16 w-16 object-contain mb-3"
+                />
+                <span className="font-bold text-lg text-black">CSS</span>
+              </div>
+              <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <img
+                  src={js}
+                  alt="JavaScript"
+                  className="h-16 w-16 object-contain mb-3"
+                />
+                <span className="font-bold text-lg text-black">JavaScript</span>
+              </div>
+              <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <img
+                  src={react}
+                  alt="React.js"
+                  className="h-16 w-16 object-contain mb-3"
+                />
+                <span className="font-bold text-lg text-black">React.js</span>
+              </div>
+              <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <img
+                  src={nodejs}
+                  alt="Node.js"
+                  className="h-16 w-16 object-contain mb-3"
+                />
+                <span className="font-bold text-lg text-black">Node.js</span>
+              </div>
+              <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <img
+                  src={tailwind}
+                  alt="Tailwind CSS"
+                  className="h-16 w-16 object-contain mb-3"
+                />
+                <span className="font-bold text-lg text-black">Tailwind</span>
+              </div>
+              <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <img
+                  src={java}
+                  alt="Java"
+                  className="h-16 w-16 object-contain mb-3"
+                />
+                <span className="font-bold text-lg text-black">Java</span>
+              </div>
+              <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <img
+                  src={c}
+                  alt="C"
+                  className="h-16 w-16 object-contain mb-3"
+                />
+                <span className="font-bold text-lg text-black">C</span>
+              </div>
+              <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <img
+                  src={csharp}
+                  alt="C#"
+                  className="h-16 w-16 object-contain mb-3"
+                />
+                <span className="font-bold text-lg text-black">C#</span>
+              </div>
             </div>
           </div>
-        </div>
         )}
 
-        {activeLink === '#contact' && (
-        <div id="contact" className="mt-16 md:mt-0 text-left pb-10">
-          <h1 className="text-black font-bold font-serif text-4xl md:text-4xl border-b-2 border-black">CONTACTS</h1>
-          <div className="flex flex-col mt-10 mx-4 md:mx-10 space-y-6">
-            <div className="flex flex-row items-center space-x-6">
-              <img src={emaillogo} alt="Email Logo" className="h-10 w-10 md:h-12 md:w-12 object-contain" />
-              <h2 className="text-black font-bold text-lg md:text-xl">julrymahilum12@gmail.com</h2>
-            </div>
-            <div className="flex flex-row items-center space-x-6">
-              <img src={phonelogo} alt="Phone Logo" className="h-10 w-10 md:h-12 md:w-12 object-contain" />
-              <h2 className="text-black font-bold text-lg md:text-xl">09859722995</h2>
-            </div>
-            <div className="flex flex-row items-center space-x-6">
-              <img src={fb} alt="Facebook Logo" className="h-10 w-10 md:h-12 md:w-12 object-contain" />
-              <a href="https://web.facebook.com/itzworrie" target="_blank" rel="noopener noreferrer" className="text-black font-bold text-lg md:text-xl hover:underline">
-                Julry Mahilum
-              </a>
-            </div>
-            <div className="flex flex-row items-center space-x-6">
-              <img src={insta} alt="Instagram Logo" className="h-10 w-10 md:h-12 md:w-12 object-contain" />
-              <a href="https://www.instagram.com/itz.jmworrie/" target="_blank" rel="noopener noreferrer" className="text-black font-bold text-lg md:text-xl hover:underline">
-                Julry M.
-              </a>
-            </div>
-            <div className="flex flex-row items-center space-x-6">
-              <img src={github} alt="GitHub Logo" className="h-10 w-10 md:h-12 md:w-12 object-contain" />
-              <a href="https://github.com/worriee" target="_blank" rel="noopener noreferrer" className="text-black font-bold text-lg md:text-xl hover:underline">
-                Worriee
-              </a>
-            </div>
-            <div className="flex flex-row items-center space-x-6">
-              <img src={linkedin} alt="Online Jobs Ph Logo" className="h-10 w-10 md:h-12 md:w-12 object-contain" />
-              <a href="https://www.linkedin.com/in/julry-mahilum-91a47240a" target="_blank" rel="noopener noreferrer" className="text-black font-bold text-lg md:text-xl hover:underline">
-                Julry Mahilum
-              </a>
-            </div>
-            <div className="flex flex-row items-center space-x-6">
-              <img src={jobstreet} alt="Jobstreet Logo" className="h-10 w-10 md:h-12 md:w-12 object-contain" />
-              <a href="https://ph.jobstreet.com/profiles/julry-mahilum-nrpn26H1WV" target="_blank" rel="noopener noreferrer" className="text-black font-bold text-lg md:text-xl hover:underline">
-                Julry Mahilum
-              </a>
-            </div>
-            <div className="flex flex-row items-center space-x-6">
-              <img src={onlinejobsph} alt="Online Jobs Ph Logo" className="h-10 w-10 md:h-12 md:w-12 object-contain" />
-              <a href="https://v2.onlinejobs.ph/jobseekers/info/5017643" target="_blank" rel="noopener noreferrer" className="text-black font-bold text-lg md:text-xl hover:underline">
-                Julry Mahilum
-              </a>
+        {activeLink === "#projects" && (
+          <div id="projects" className="mt-16 md:mt-0 text-left pb-30">
+            <h1 className="text-black font-bold font-serif text-4xl md:text-4xl border-b-2 border-black">
+              PROJECTS
+            </h1>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10 mx-4 md:mx-0">
+              <div className="relative bg-white p-6 rounded-xl shadow-md border border-gray-200 hover:shadow-xl transition-all duration-300">
+                <div className="flex gap-2 mb-2 md:absolute md:top-6 md:right-6 md:mb-0">
+                  <span className="text-gray-500 font-bold text-sm tracking-wider">
+                    JAVA
+                  </span>
+                  <span className="text-gray-500 font-bold text-sm tracking-wider">
+                    XML
+                  </span>
+                </div>
+                <h2 className="text-2xl font-bold text-black border-b border-gray-300 pb-2 mb-4 md:pr-12 w-fit">
+                  AI Notes
+                </h2>
+                <p className="text-gray-700 text-base mb-6">
+                  Turn YouTube videos into study notes instantly. Just paste a
+                  link, and the app automatically generates organized notes with
+                  headings and bullet points — no more watching videos that are
+                  hours long.
+                </p>
+                <a
+                  href="https://github.com/worriee/SimpleNoteApp"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-4 py-2 bg-transparent text-black border border-black rounded-md hover:bg-gray-200 transition duration-300 font-bold"
+                >
+                  View Repository
+                </a>
+              </div>
+
+              <div className="relative bg-white p-6 rounded-xl shadow-md border border-gray-200 hover:shadow-xl transition-all duration-300">
+                <div className="flex gap-2 mb-2 md:absolute md:top-6 md:right-6 md:mb-0">
+                  <span className="text-gray-500 font-bold text-sm tracking-wider">
+                    JAVASCRIPT
+                  </span>
+                  <span className="text-gray-500 font-bold text-sm tracking-wider">
+                    REACT
+                  </span>
+                  <span className="text-gray-500 font-bold text-sm tracking-wider">
+                    PWA
+                  </span>
+                </div>
+                <h2 className="text-2xl font-bold text-black border-b border-gray-300 pb-2 mb-4 md:pr-12 w-fit">
+                  Web Loader
+                </h2>
+                <p className="text-gray-700 text-base mb-6">
+                  A mobile-friendly app for buying and managing data (GB) load.
+                  Users can submit orders and upload payment receipts, while
+                  admins track and manage everything in real time through a
+                  secure dashboard.
+                </p>
+                <a
+                  href="https://github.com/worriee/web-loaderbyjimzxworrie"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-4 py-2 bg-transparent text-black border border-black rounded-md hover:bg-gray-200 transition duration-300 font-bold"
+                >
+                  View Repository
+                </a>
+              </div>
+
+              <div className="relative bg-white p-6 rounded-xl shadow-md border border-gray-200 hover:shadow-xl transition-all duration-300">
+                <div className="flex gap-2 mb-2 md:absolute md:top-6 md:right-6 md:mb-0">
+                  <span className="text-gray-500 font-bold text-sm tracking-wider">
+                    REACT
+                  </span>
+                  <span className="text-gray-500 font-bold text-sm tracking-wider">
+                    EXPRESS
+                  </span>
+                  <span className="text-gray-500 font-bold text-sm tracking-wider">
+                    PWA
+                  </span>
+                </div>
+                <h2 className="text-2xl font-bold text-black border-b border-gray-300 pb-2 mb-4 md:pr-12 w-fit">
+                  TUON AI
+                </h2>
+                <p className="text-gray-700 text-base mb-6">
+                  An AI study companion that lets you chat with AI, generate
+                  notes on any topic, and test yourself with interactive
+                  quizzes. Supports multiple AI models and works offline as an
+                  installable app.
+                </p>
+                <a
+                  href="https://github.com/worriee/quizmakerapp"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-4 py-2 bg-transparent text-black border border-black rounded-md hover:bg-gray-200 transition duration-300 font-bold"
+                >
+                  View Repository
+                </a>
+              </div>
             </div>
           </div>
-        </div>
+        )}
+
+        {activeLink === "#contact" && (
+          <div id="contact" className="mt-16 md:mt-0 text-left pb-10">
+            <h1 className="text-black font-bold font-serif text-4xl md:text-4xl border-b-2 border-black">
+              CONTACTS
+            </h1>
+            <div className="flex flex-col mt-10 mx-4 md:mx-10 space-y-6">
+              <div className="flex flex-row items-center space-x-6">
+                <img
+                  src={emaillogo}
+                  alt="Email Logo"
+                  className="h-10 w-10 md:h-12 md:w-12 object-contain"
+                />
+                <h2 className="text-black font-bold text-lg md:text-xl">
+                  julrymahilum12@gmail.com
+                </h2>
+              </div>
+              <div className="flex flex-row items-center space-x-6">
+                <img
+                  src={phonelogo}
+                  alt="Phone Logo"
+                  className="h-10 w-10 md:h-12 md:w-12 object-contain"
+                />
+                <h2 className="text-black font-bold text-lg md:text-xl">
+                  09859722995
+                </h2>
+              </div>
+              <div className="flex flex-row items-center space-x-6">
+                <img
+                  src={fb}
+                  alt="Facebook Logo"
+                  className="h-10 w-10 md:h-12 md:w-12 object-contain"
+                />
+                <a
+                  href="https://web.facebook.com/itzworrie"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-black font-bold text-lg md:text-xl hover:underline"
+                >
+                  Julry Mahilum
+                </a>
+              </div>
+              <div className="flex flex-row items-center space-x-6">
+                <img
+                  src={insta}
+                  alt="Instagram Logo"
+                  className="h-10 w-10 md:h-12 md:w-12 object-contain"
+                />
+                <a
+                  href="https://www.instagram.com/itz.jmworrie/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-black font-bold text-lg md:text-xl hover:underline"
+                >
+                  Julry M.
+                </a>
+              </div>
+              <div className="flex flex-row items-center space-x-6">
+                <img
+                  src={github}
+                  alt="GitHub Logo"
+                  className="h-10 w-10 md:h-12 md:w-12 object-contain"
+                />
+                <a
+                  href="https://github.com/worriee"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-black font-bold text-lg md:text-xl hover:underline"
+                >
+                  Worriee
+                </a>
+              </div>
+              <div className="flex flex-row items-center space-x-6">
+                <img
+                  src={linkedin}
+                  alt="Online Jobs Ph Logo"
+                  className="h-10 w-10 md:h-12 md:w-12 object-contain"
+                />
+                <a
+                  href="https://www.linkedin.com/in/julry-mahilum-91a47240a"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-black font-bold text-lg md:text-xl hover:underline"
+                >
+                  Julry Mahilum
+                </a>
+              </div>
+              <div className="flex flex-row items-center space-x-6">
+                <img
+                  src={jobstreet}
+                  alt="Jobstreet Logo"
+                  className="h-10 w-10 md:h-12 md:w-12 object-contain"
+                />
+                <a
+                  href="https://ph.jobstreet.com/profiles/julry-mahilum-nrpn26H1WV"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-black font-bold text-lg md:text-xl hover:underline"
+                >
+                  Julry Mahilum
+                </a>
+              </div>
+              <div className="flex flex-row items-center space-x-6">
+                <img
+                  src={onlinejobsph}
+                  alt="Online Jobs Ph Logo"
+                  className="h-10 w-10 md:h-12 md:w-12 object-contain"
+                />
+                <a
+                  href="https://v2.onlinejobs.ph/jobseekers/info/5017643"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-black font-bold text-lg md:text-xl hover:underline"
+                >
+                  Julry Mahilum
+                </a>
+              </div>
+            </div>
+          </div>
         )}
       </div>
     </div>
-  )
+  );
 }
