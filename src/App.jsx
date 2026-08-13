@@ -387,11 +387,11 @@ export default function App() {
               <p className="mt-3 text-slate-700 italic text-lg md:text-xl dark:text-slate-300">
                 "Think with AI"
               </p>
-              <div className="flex flex-row mt-8 space-x-4 justify-center md:justify-start">
+              <div className="flex flex-col sm:flex-row mt-8 space-y-3 sm:space-y-0 sm:space-x-4 justify-center md:justify-start">
                 <a
                   href="/Mahilum_Resume.pdf"
                   download
-                  className="flex items-center px-5 py-2.5 bg-transparent text-blue-600 border border-blue-500 rounded-md hover:bg-blue-500 hover:text-white transition duration-300 font-bold dark:text-blue-300 dark:border-blue-400"
+                  className="flex items-center justify-center w-full sm:w-auto px-5 py-2.5 bg-transparent text-blue-600 border border-blue-500 rounded-md hover:bg-blue-500 hover:text-white transition duration-300 font-bold dark:text-blue-300 dark:border-blue-400"
                 >
                   <img
                     src={resumeIcon}
@@ -402,7 +402,7 @@ export default function App() {
                 </a>
                 <button
                   onClick={() => setIsContactOpen(true)}
-                  className="flex items-center px-5 py-2.5 bg-blue-500 text-white border border-blue-500 rounded-md hover:bg-blue-400 transition duration-300 font-bold"
+                  className="flex items-center justify-center w-full sm:w-auto px-5 py-2.5 bg-blue-500 text-white border border-blue-500 rounded-md hover:bg-blue-400 transition duration-300 font-bold"
                 >
                   Contact Me
                   <img
