@@ -8,8 +8,8 @@
 
 - Learning to code without a roadmap taught me how to figure things out on my own
 - Building projects alone builds patience and problem-solving more than any tutorial
-- Consistency > motivation
 - Every project is proof that I didn't wait for permission to start
+- I think with AI.
 
 ---
 

@@ -10,7 +10,6 @@ import github from "./assets/github.png";
 import insta from "./assets/instagram.png";
 import js from "./assets/js.png";
 import java from "./assets/java.png";
-import c from "./assets/c.png";
 import html from "./assets/html.png";
 import xml from "./assets/xml.png";
 import css from "./assets/css.png";
@@ -19,17 +18,15 @@ import nodejs from "./assets/nodejs.png";
 import tailwind from "./assets/tailwind.png";
 import git from "./assets/git.png";
 import androidstudio from "./assets/androidstudio.png";
-import csharp from "./assets/csharp.png";
+import zed from "./assets/zed.png";
 import vscode from "./assets/vscode.png";
 import linkedin from "./assets/linkedin.png";
 import jobstreet from "./assets/jobstreet.png";
-import onlinejobsph from "./assets/onlinejobsph.png";
 
 export default function App() {
   const [activeLink, setActiveLink] = useState("#home");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [homeText1, setHomeText1] = useState("");
-  const [homeText2, setHomeText2] = useState("");
   const contentRef = useRef(null);
 
   useEffect(() => {
@@ -61,33 +58,19 @@ export default function App() {
   useEffect(() => {
     if (activeLink === "#home") {
       setHomeText1("");
-      setHomeText2("");
       const text1 = "Hi, I'm Julry.";
-      const text2 = "A beginner Web and App developer.";
       let i = 0;
-      let j = 0;
-      let timer1, timer2, timeout;
+      let timer1;
 
       timer1 = setInterval(() => {
         setHomeText1(text1.substring(0, i + 1));
         i++;
         if (i === text1.length) {
           clearInterval(timer1);
-          timeout = setTimeout(() => {
-            timer2 = setInterval(() => {
-              setHomeText2(text2.substring(0, j + 1));
-              j++;
-              if (j === text2.length) {
-                clearInterval(timer2);
-              }
-            }, 50); // Medyo mas paspas gamay ang ikaduhang text
-          }, 300); // 300ms nga delay ayha mo-start ang 2nd text
         }
       }, 100); // 100ms delay sa every letter sa 1st text
       return () => {
         clearInterval(timer1);
-        clearInterval(timer2);
-        clearTimeout(timeout);
       };
     }
   }, [activeLink]);
@@ -137,7 +120,7 @@ export default function App() {
             <h3 className="text-black font-bold font-serif text-2xl md:text-2xl mt-2 md:mt-5">
               Julry Mahilum
             </h3>
-            <h3 className="mt-3">Web & App Developer.</h3>
+            <h3 className="mt-3">AI Integration Developer.</h3>
           </div>
           <ul className="mt-10 space-y-5">
             <li>
@@ -258,9 +241,6 @@ export default function App() {
             <h2 className="text-gray-300 [-webkit-text-stroke:1px_black] text-2xl md:text-3xl font-bold bg-opacity-50 px-4 py-2 rounded min-h-[3rem] md:min-h-[3.5rem] flex items-center text-center">
               {homeText1 || "\u00A0"}
             </h2>
-            <h2 className="text-gray-300 [-webkit-text-stroke:1px_black] text-2xl md:text-3xl font-bold bg-opacity-50 px-4 py-2 rounded min-h-[3rem] md:min-h-[3.5rem] flex items-center text-center">
-              {homeText2 || "\u00A0"}
-            </h2>
             <div className="flex flex-row mt-6 space-x-4">
               <button
                 onClick={() => setActiveLink("#about")}
@@ -306,6 +286,14 @@ export default function App() {
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 mt-10 mx-4 md:mx-0">
               <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                 <img
+                  src={zed}
+                  alt="Zed"
+                  className="h-16 w-16 object-contain mb-3"
+                />
+                <span className="font-bold text-lg text-black">Zed</span>
+              </div>
+              <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <img
                   src={vscode}
                   alt="Visual Studio Code"
                   className="h-16 w-16 object-contain mb-3"
@@ -342,38 +330,6 @@ export default function App() {
               </div>
               <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                 <img
-                  src={html}
-                  alt="HTML"
-                  className="h-16 w-16 object-contain mb-3"
-                />
-                <span className="font-bold text-lg text-black">HTML</span>
-              </div>
-              <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                <img
-                  src={xml}
-                  alt="XML"
-                  className="h-16 w-16 object-contain mb-3"
-                />
-                <span className="font-bold text-lg text-black">XML</span>
-              </div>
-              <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                <img
-                  src={css}
-                  alt="CSS"
-                  className="h-16 w-16 object-contain mb-3"
-                />
-                <span className="font-bold text-lg text-black">CSS</span>
-              </div>
-              <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                <img
-                  src={js}
-                  alt="JavaScript"
-                  className="h-16 w-16 object-contain mb-3"
-                />
-                <span className="font-bold text-lg text-black">JavaScript</span>
-              </div>
-              <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                <img
                   src={react}
                   alt="React.js"
                   className="h-16 w-16 object-contain mb-3"
@@ -398,6 +354,14 @@ export default function App() {
               </div>
               <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                 <img
+                  src={js}
+                  alt="JavaScript"
+                  className="h-16 w-16 object-contain mb-3"
+                />
+                <span className="font-bold text-lg text-black">JavaScript</span>
+              </div>
+              <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <img
                   src={java}
                   alt="Java"
                   className="h-16 w-16 object-contain mb-3"
@@ -406,19 +370,27 @@ export default function App() {
               </div>
               <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                 <img
-                  src={c}
-                  alt="C"
+                  src={html}
+                  alt="HTML"
                   className="h-16 w-16 object-contain mb-3"
                 />
-                <span className="font-bold text-lg text-black">C</span>
+                <span className="font-bold text-lg text-black">HTML</span>
               </div>
               <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                 <img
-                  src={csharp}
-                  alt="C#"
+                  src={xml}
+                  alt="XML"
                   className="h-16 w-16 object-contain mb-3"
                 />
-                <span className="font-bold text-lg text-black">C#</span>
+                <span className="font-bold text-lg text-black">XML</span>
+              </div>
+              <div className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <img
+                  src={css}
+                  alt="CSS"
+                  className="h-16 w-16 object-contain mb-3"
+                />
+                <span className="font-bold text-lg text-black">CSS</span>
               </div>
             </div>
           </div>
@@ -617,21 +589,6 @@ export default function App() {
                 />
                 <a
                   href="https://ph.jobstreet.com/profiles/julry-mahilum-nrpn26H1WV"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-black font-bold text-lg md:text-xl hover:underline"
-                >
-                  Julry Mahilum
-                </a>
-              </div>
-              <div className="flex flex-row items-center space-x-6">
-                <img
-                  src={onlinejobsph}
-                  alt="Online Jobs Ph Logo"
-                  className="h-10 w-10 md:h-12 md:w-12 object-contain"
-                />
-                <a
-                  href="https://v2.onlinejobs.ph/jobseekers/info/5017643"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-black font-bold text-lg md:text-xl hover:underline"
