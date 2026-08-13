@@ -379,13 +379,13 @@ export default function App() {
             />
             <div className="text-center md:text-left">
               <h2 className="mt-3 text-blue-600 font-semibold text-lg dark:text-blue-300">
-                AI Integration Developer.
+                Junior AI Integration Developer
               </h2>
               <h1 className="gradient-text font-bold font-serif text-4xl md:text-5xl mt-2 min-h-[3rem] md:min-h-[3.5rem]">
                 {heroText || "\u00A0"}
               </h1>
               <p className="mt-3 text-slate-700 italic text-lg md:text-xl dark:text-slate-300">
-                "Think with AI"
+                "Think with AI."
               </p>
               <div className="flex flex-col sm:flex-row mt-8 space-y-3 sm:space-y-0 sm:space-x-4 justify-center md:justify-start">
                 <a
@@ -424,13 +424,14 @@ export default function App() {
               ABOUT ME
             </h1>
             <h2 className="text-xl md:text-2xl text-slate-700 mt-8 leading-relaxed max-w-3xl dark:text-slate-300">
-              Since Pandemic (2020) I suddenly get interested about vpn. I used
-              vpn that time for "Free Internet" cause those were the hard times
-              like everyone has no work. I'm also struggling to access the
-              internet that's why I used vpn then came up of a random idea of
-              making my own vpn application. From that moment on I started
-              learning App Development first then ended up learning Web
-              Development as well in college.
+              My tech journey started in 2020 during the pandemic. I wanted to
+              build my own VPN app to get better internet access, and that
+              curiosity got me hooked on mobile development. Later in college, I
+              expanded into web development. Nowadays, I heavily use AI tools
+              and automated agentic workflows to learn fast and keep up with new
+              technology. I combine web and mobile development with AI
+              integrations to build practical tools and apps that solve real
+              problems.
             </h2>
           </div>
         </div>
