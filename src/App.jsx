@@ -1,57 +1,125 @@
 import { useState, useEffect, useRef } from "react";
 import myPic from "./assets/my-pic.png";
-import resumeIcon from "./assets/downloads.png";
 import emaillogo from "./assets/email-logo.png";
 import phonelogo from "./assets/phone-logo.png";
 import github from "./assets/github.png";
 import facebook from "./assets/facebook.png";
-import rightArrow from "./assets/rightarrow.png";
 import insta from "./assets/instagram.png";
-import js from "./assets/js.png";
-import java from "./assets/java.png";
-import py from "./assets/python.png";
-import html from "./assets/html.png";
-import xml from "./assets/xml.png";
-import css from "./assets/css.png";
-import react from "./assets/react.png";
-import nodejs from "./assets/nodejs.png";
-import tailwind from "./assets/tailwind.png";
-import git from "./assets/git.png";
-import androidstudio from "./assets/androidstudio.png";
-import zed from "./assets/zed.png";
-import vscode from "./assets/vscode.png";
 import linkedin from "./assets/linkedin.png";
 import jobstreet from "./assets/jobstreet.png";
 
-const NAV_LINKS = ["home", "about", "skills", "projects", "contact"];
+const NAV_LINKS = ["home", "about", "projects", "contact"];
 
-// icon kind: color = transparent bg + colored logo, dark = black logo,
-// white = white bg (multiply blend), zed = black bg (invert in light, screen in dark)
-const SKILLS = [
-  { src: zed, alt: "Zed", name: "Zed", kind: "zed" },
+const SKILL_GROUPS = [
   {
-    src: vscode,
-    alt: "Visual Studio Code",
-    name: "Visual Studio Code",
-    kind: "color",
+    title: "STACK",
+    items: [
+      "React",
+      "Typescript",
+      "Javascript",
+      "Node.js",
+      "Tailwind",
+      "Java",
+      "Python",
+      "PostgreSQL",
+    ],
   },
   {
-    src: androidstudio,
-    alt: "Android Studio",
-    name: "Android Studio",
-    kind: "color",
+    title: "TOOLS & PLATFORMS",
+    items: [
+      "Git",
+      "GitHub",
+      "Zed",
+      "Visual Studio Code",
+      "Android Studio",
+      "PWA",
+      "Vercel",
+      "Render",
+      "Supabase",
+      "Resend",
+      "Upstash",
+    ],
   },
-  { src: github, alt: "Github", name: "Github", kind: "dark" },
-  { src: git, alt: "Git", name: "Git", kind: "color" },
-  { src: react, alt: "React.js", name: "React.js", kind: "color" },
-  { src: nodejs, alt: "Node.js", name: "Node.js", kind: "color" },
-  { src: tailwind, alt: "Tailwind CSS", name: "Tailwind", kind: "white" },
-  { src: js, alt: "JavaScript", name: "JavaScript", kind: "dark" },
-  { src: py, alt: "Python", name: "Python", kind: "color" },
-  { src: java, alt: "Java", name: "Java", kind: "color" },
-  { src: html, alt: "HTML", name: "HTML", kind: "white" },
-  { src: xml, alt: "XML", name: "XML", kind: "color" },
-  { src: css, alt: "CSS", name: "CSS", kind: "color" },
+  {
+    title: "AI & WORKFLOW",
+    items: ["Deepseek", "GLM", "Kimi", "OpenCode CLI", "Pi"],
+  },
+];
+
+const PROJECTS = [
+  {
+    title: "TUON AI",
+    tags: ["REACT", "EXPRESS", "SUPABASE", "PWA"],
+    summary:
+      "AI learning platform that generates structured notes and adaptive quizzes — built to understand, not memorize.",
+    bullets: [
+      "Multi-model AI: Gemini, Step, GLM, or any OpenAI-compatible API",
+      "Email verification, password reset, 5-attempt account lockout",
+      "Installable PWA with per-model rate limiting",
+    ],
+    repo: "https://github.com/worriee/tuon-ai",
+    demo: "https://tuon-ai.vercel.app",
+  },
+  {
+    title: "UVE Workflow",
+    tags: ["AI", "WORKFLOW", "TEMPLATE"],
+    summary:
+      "Structured AI coding workflow template with persistent memory, 8 specialized personas, and one-command session recovery.",
+    bullets: [
+      "7 markdown memory layers with automatic archival",
+      "8 modular AI personas + manual trigger flags",
+      "Workspace-level isolation — no cross-project context leaks",
+    ],
+    repo: "https://github.com/worriee/uveworkflow",
+  },
+  {
+    title: "Pi-Worrie",
+    tags: ["PI", "AI", "CLI"],
+    summary:
+      "Personal Pi CLI extension suite — semi-automated version of my UVE workflow, installable in one command.",
+    bullets: [
+      "Persona skills: /plan, /coder, /orchestrator, /orch-full 11-stage pipeline",
+      "Subagents with single, parallel, chain, and background modes",
+      "Memory CRUD commands with auto-archiving and in-CLI updater",
+    ],
+    repo: "https://github.com/worriee/pi-worrie",
+  },
+  {
+    title: "AI Notes",
+    tags: ["JAVA", "ANDROID", "GEMINI"],
+    summary:
+      "Android app that turns any YouTube video into structured study notes in one tap.",
+    bullets: [
+      "Gemini-generated notes with academic formatting",
+      "Archive + recently-deleted recovery, encrypted local storage",
+      "Full light/dark adaptive UI",
+    ],
+    repo: "https://github.com/worriee/SimpleNoteApp",
+  },
+  {
+    title: "StudyHub",
+    tags: ["C#", "WINFORMS", "SQL SERVER"],
+    summary:
+      "Study material marketplace desktop app — project-swap transactions with real-time chat. (a project in my 2nd yr. college)",
+    bullets: [
+      "Login sessions, dashboard cards, transaction history w/ search + filters",
+      "Real-time chatroom and file-swap flow backed by SQL Server",
+      "Dark mode, input validation, drag-and-drop project upload",
+    ],
+    repo: "https://github.com/worriee/StudyHub-Progress",
+  },
+  {
+    title: "Web Loader",
+    tags: ["REACT", "SUPABASE", "REDIS", "PWA"],
+    summary:
+      "Mobile-first data-loading app with APK + PWA — order, upload receipt, track by transaction ID.",
+    bullets: [
+      "Real-time admin dashboard with one-click status updates",
+      "Security: bcrypt, JWT httpOnly cookies, rate limiting, upload validation",
+      "Installable as a native-feel PWA or Android APK",
+    ],
+    repo: "https://github.com/worriee/web-loaderbyjimzxworrie",
+  },
 ];
 
 const CONTACTS = [
@@ -89,12 +157,21 @@ function useReveal() {
       ([entry]) => {
         el.classList.toggle("visible", entry.isIntersecting);
       },
-      { threshold: 0.35 },
+      { threshold: 0.2 },
     );
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
   return ref;
+}
+
+function Reveal({ children, className = "" }) {
+  const ref = useReveal();
+  return (
+    <div ref={ref} className={`reveal ${className}`}>
+      {children}
+    </div>
+  );
 }
 
 function useTypewriter(text) {
@@ -113,25 +190,6 @@ function useTypewriter(text) {
   return out;
 }
 
-function SkillIcon({ skill }) {
-  // No chip — blend mode hides the PNG background so only the logo shows on the card
-  // white-bg (html, tailwind): multiply → white bg vanishes on light & dark cards
-  // black-bg (zed): invert in light (bg→white, logo→dark), screen in dark (bg→invisible)
-  const blend =
-    skill.kind === "white"
-      ? "mix-blend-multiply"
-      : skill.kind === "zed"
-        ? "invert dark:invert-0 dark:mix-blend-screen"
-        : "";
-  return (
-    <img
-      src={skill.src}
-      alt={skill.alt}
-      className={`h-14 w-14 object-contain mb-3 ${blend}`}
-    />
-  );
-}
-
 export default function App() {
   const [theme, setTheme] = useState(
     () => localStorage.getItem("theme") || "dark",
@@ -145,10 +203,10 @@ export default function App() {
   const navbarName = useTypewriter("Julry M.");
   const heroText = useTypewriter("Hi, I'm Julry.");
   const heroRef = useReveal();
+  const techRef = useReveal();
   const aboutRef = useReveal();
-  const skillsRef = useReveal();
-  const projectsRef = useReveal();
   const contactRef = useReveal();
+  const resumeRef = useRef(null);
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", theme === "dark");
@@ -176,7 +234,12 @@ export default function App() {
 
   useEffect(() => {
     const handleKey = (e) => {
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      const tag = e.target.tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA") return;
       if (e.key === "Escape") setIsContactOpen(false);
+      else if (e.key.toLowerCase() === "c") setIsContactOpen(true);
+      else if (e.key.toLowerCase() === "d") resumeRef.current?.click();
     };
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
@@ -212,6 +275,29 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-slate-100 dark:bg-[#050816]">
+      <div
+        className="fixed inset-0 z-[70] overflow-hidden pointer-events-none"
+        aria-hidden="true"
+      >
+        <span className="flake"></span>
+        <span className="flake"></span>
+        <span className="flake"></span>
+        <span className="flake"></span>
+        <span className="flake"></span>
+        <span className="flake"></span>
+        <span className="flake"></span>
+        <span className="flake"></span>
+        <span className="flake"></span>
+        <span className="flake"></span>
+        <span className="flake"></span>
+        <span className="flake"></span>
+        <span className="flake"></span>
+        <span className="flake"></span>
+        <span className="flake"></span>
+        <span className="flake"></span>
+        <span className="flake"></span>
+        <span className="flake"></span>
+      </div>
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
@@ -244,7 +330,7 @@ export default function App() {
                   ? "Switch to light mode"
                   : "Switch to dark mode"
               }
-              className="p-2 rounded-md border border-slate-300 text-slate-700 bg-white/70 hover:border-blue-500 transition-colors dark:border-white/10 dark:text-white dark:bg-white/5 dark:hover:border-blue-400"
+              className="p-2 rounded-md border border-slate-300 text-slate-700 bg-white/70 transition-colors dark:border-white/10 dark:text-white dark:bg-white/5"
             >
               {theme === "dark" ? (
                 <svg
@@ -363,9 +449,9 @@ export default function App() {
         id="home"
         className="min-h-screen relative overflow-hidden flex items-center"
       >
-        <div className="orb bg-blue-500/40 w-96 h-96 -top-20 -left-20"></div>
-        <div className="orb bg-cyan-400/30 w-80 h-80 top-1/3 right-0"></div>
-        <div className="orb bg-violet-500/30 w-72 h-72 bottom-0 left-1/3"></div>
+        <div className="orb bg-white/10 w-96 h-96 -top-20 -left-20"></div>
+        <div className="orb bg-zinc-400/20 w-80 h-80 top-1/3 right-0"></div>
+        <div className="orb bg-white/5 w-72 h-72 bottom-0 left-1/3"></div>
 
         <div className="relative z-10 max-w-6xl mx-auto px-6 pt-24 pb-16 w-full">
           <div
@@ -375,43 +461,67 @@ export default function App() {
             <img
               src={myPic}
               alt="Julry Mahilum"
-              className="h-44 w-44 md:h-56 md:w-56 object-cover rounded-full border-4 border-blue-500/50 shadow-2xl shadow-blue-500/30"
+              className="h-44 w-44 md:h-56 md:w-56 object-cover rounded-full border-4 border-white/20 shadow-2xl shadow-black/40"
             />
             <div className="text-center md:text-left">
-              <h2 className="mt-3 text-blue-600 font-semibold text-lg dark:text-blue-300">
-                Junior AI Integration Developer
+              <h2 className="mt-3 text-zinc-600 font-semibold text-lg dark:text-zinc-300">
+                AI Integration Developer
               </h2>
               <h1 className="gradient-text font-bold font-serif text-4xl md:text-5xl mt-2 min-h-[3rem] md:min-h-[3.5rem]">
                 {heroText || "\u00A0"}
               </h1>
-              <p className="mt-3 text-slate-700 italic text-lg md:text-xl dark:text-slate-300">
-                "Think with AI."
-              </p>
               <div className="flex flex-col sm:flex-row mt-8 space-y-3 sm:space-y-0 sm:space-x-4 justify-center md:justify-start">
-                <a
-                  href="/Mahilum_Resume.pdf"
-                  download
-                  className="flex items-center justify-center w-full sm:w-auto px-5 py-2.5 bg-transparent text-blue-600 border border-blue-500 rounded-md hover:bg-blue-500 hover:text-white transition duration-300 font-bold dark:text-blue-300 dark:border-blue-400"
-                >
-                  <img
-                    src={resumeIcon}
-                    alt="Document"
-                    className="w-4 h-4 mr-2 dark:invert"
-                  />
-                  Download Resume
-                </a>
                 <button
                   onClick={() => setIsContactOpen(true)}
-                  className="flex items-center justify-center w-full sm:w-auto px-5 py-2.5 bg-blue-500 text-white border border-blue-500 rounded-md hover:bg-blue-400 transition duration-300 font-bold"
+                  className="btn-fill flex items-center justify-center w-full sm:w-auto px-5 py-2.5 bg-transparent text-zinc-600 border border-zinc-400 rounded-md font-bold dark:text-zinc-300 dark:border-zinc-500"
                 >
+                  <span className="h-6 w-6 rounded-md bg-white/70 border border-slate-200 text-slate-800 text-sm font-bold flex items-center justify-center mr-2 dark:bg-white/5 dark:border-white/10 dark:text-slate-200">
+                    C
+                  </span>
                   Contact Me
-                  <img
-                    src={rightArrow}
-                    alt="Arrow"
-                    className="w-4 h-4 ml-2 dark:invert"
-                  />
                 </button>
+                <a
+                  ref={resumeRef}
+                  href="/Mahilum_Resume.pdf"
+                  download
+                  className="btn-fill flex items-center justify-center w-full sm:w-auto px-5 py-2.5 bg-transparent text-zinc-600 border border-zinc-400 rounded-md font-bold dark:text-zinc-300 dark:border-zinc-500"
+                >
+                  <span className="h-6 w-6 rounded-md bg-white/70 border border-slate-200 text-slate-800 text-sm font-bold flex items-center justify-center mr-2 dark:bg-white/5 dark:border-white/10 dark:text-slate-200">
+                    D
+                  </span>
+                  Download Resume
+                </a>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tech" className="py-24 relative">
+        <div className="max-w-6xl mx-auto px-6">
+          <div ref={techRef} className="reveal">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {SKILL_GROUPS.map((group) => (
+                <div
+                  key={group.title}
+                  className="p-6 bg-white/80 backdrop-blur-md rounded-xl shadow-lg border border-slate-200 hover:shadow-white/10 hover:border-zinc-300 transition-all duration-300 dark:bg-white/5 dark:border-white/10 dark:hover:shadow-white/5 dark:hover:border-zinc-500/60"
+                >
+                  <h2 className="text-xl font-bold text-slate-900 mb-2 dark:text-white">
+                    {group.title}
+                  </h2>
+                  <div className="h-0.5 w-12 bg-gradient-to-r from-zinc-400 to-white rounded-full mb-4"></div>
+                  <div className="flex flex-wrap gap-3">
+                    {group.items.map((item) => (
+                      <span
+                        key={item}
+                        className="px-4 py-1.5 rounded-full text-sm font-semibold bg-white/70 border border-slate-200 text-slate-800 hover:bg-zinc-300 hover:text-black hover:scale-105 transition-all duration-200 dark:bg-white/5 dark:border-white/10 dark:text-slate-200 dark:hover:bg-zinc-300 dark:hover:text-black"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -420,7 +530,7 @@ export default function App() {
       <section id="about" className="py-24 relative">
         <div className="max-w-6xl mx-auto px-6">
           <div ref={aboutRef} className="reveal">
-            <h1 className="text-slate-900 font-bold font-serif text-4xl border-b-2 border-blue-500 dark:text-white">
+            <h1 className="text-slate-900 font-bold font-serif text-4xl border-b-2 border-zinc-400 dark:text-white">
               ABOUT ME
             </h1>
             <h2 className="text-xl md:text-2xl text-slate-700 mt-8 leading-relaxed max-w-3xl dark:text-slate-300">
@@ -437,125 +547,79 @@ export default function App() {
         </div>
       </section>
 
-      <section id="skills" className="py-24 relative">
-        <div className="max-w-6xl mx-auto px-6">
-          <div ref={skillsRef} className="reveal">
-            <h1 className="text-slate-900 font-bold font-serif text-4xl border-b-2 border-blue-500 dark:text-white">
-              SKILLS & TECHNOLOGIES
-            </h1>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 mt-10">
-              {SKILLS.map((skill) => (
-                <div
-                  key={skill.name}
-                  className="flex flex-col items-center justify-center p-6 bg-white/80 backdrop-blur-md rounded-xl shadow-lg border border-slate-200 hover:shadow-blue-500/30 hover:border-blue-400 hover:-translate-y-1 transition-all duration-300 dark:bg-white/5 dark:border-white/10 dark:hover:shadow-blue-500/20 dark:hover:border-blue-500/50"
-                >
-                  <SkillIcon skill={skill} />
-                  <span className="font-bold text-lg text-slate-800 dark:text-slate-200">
-                    {skill.name}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section id="projects" className="py-24 relative">
         <div className="max-w-6xl mx-auto px-6">
-          <div ref={projectsRef} className="reveal">
-            <h1 className="text-slate-900 font-bold font-serif text-4xl border-b-2 border-blue-500 dark:text-white">
+          <Reveal>
+            <h1 className="text-slate-900 font-bold font-serif text-4xl border-b-2 border-zinc-400 dark:text-white">
               PROJECTS
             </h1>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
-              <div className="relative bg-white/80 backdrop-blur-md p-6 rounded-xl shadow-lg border border-slate-200 hover:shadow-blue-500/30 hover:border-blue-400 hover:-translate-y-1 transition-all duration-300 dark:bg-white/5 dark:border-white/10 dark:hover:shadow-blue-500/20 dark:hover:border-blue-500/50">
-                <div className="flex gap-2 mb-2 md:absolute md:top-6 md:right-6 md:mb-0">
-                  <span className="text-blue-600 font-bold text-sm tracking-wider dark:text-blue-300">
-                    JAVA
-                  </span>
-                  <span className="text-blue-600 font-bold text-sm tracking-wider dark:text-blue-300">
-                    XML
-                  </span>
+          </Reveal>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
+            {PROJECTS.map((p) => (
+              <Reveal
+                key={p.title}
+                className="relative flex flex-col bg-white/80 backdrop-blur-md p-6 rounded-xl shadow-lg border border-slate-200 hover:shadow-white/10 hover:border-zinc-300 hover:-translate-y-1 transition-all duration-300 dark:bg-white/5 dark:border-white/10 dark:hover:shadow-white/5 dark:hover:border-zinc-500/60"
+              >
+                <div className="flex flex-wrap gap-2 mb-2 md:absolute md:top-6 md:right-6 md:mb-0">
+                  {p.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-zinc-500 font-bold text-sm tracking-wider dark:text-zinc-400"
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
                 <h2 className="text-2xl font-bold text-slate-900 border-b border-slate-200 pb-2 mb-4 md:pr-12 w-fit dark:text-white dark:border-white/10">
-                  AI Notes
+                  {p.title}
                 </h2>
-                <p className="text-slate-600 text-base mb-6 dark:text-slate-300">
-                  Turn YouTube videos into study notes instantly. Just paste a
-                  link, and the app automatically generates organized notes with
-                  headings and bullet points — no more watching videos that are
-                  hours long.
+                <p className="text-slate-600 text-base mb-3 dark:text-slate-300">
+                  {p.summary}
                 </p>
-                <a
-                  href="https://github.com/worriee/SimpleNoteApp"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center px-4 py-2 bg-transparent text-blue-600 border border-blue-500 rounded-md hover:bg-blue-500 hover:text-white transition duration-300 font-bold dark:text-blue-300 dark:border-blue-400"
-                >
-                  View Repository
-                </a>
-              </div>
-
-              <div className="relative bg-white/80 backdrop-blur-md p-6 rounded-xl shadow-lg border border-slate-200 hover:shadow-blue-500/30 hover:border-blue-400 hover:-translate-y-1 transition-all duration-300 dark:bg-white/5 dark:border-white/10 dark:hover:shadow-blue-500/20 dark:hover:border-blue-500/50">
-                <div className="flex gap-2 mb-2 md:absolute md:top-6 md:right-6 md:mb-0">
-                  <span className="text-blue-600 font-bold text-sm tracking-wider dark:text-blue-300">
-                    JAVASCRIPT
-                  </span>
-                  <span className="text-blue-600 font-bold text-sm tracking-wider dark:text-blue-300">
-                    REACT
-                  </span>
-                  <span className="text-blue-600 font-bold text-sm tracking-wider dark:text-blue-300">
-                    PWA
-                  </span>
+                <ul className="text-sm text-slate-500 space-y-1 mb-6 dark:text-slate-400">
+                  {p.bullets.map((b) => (
+                    <li key={b} className="flex items-start gap-2">
+                      <span className="mt-1.5 h-1 w-1 rounded-full bg-zinc-400 shrink-0 dark:bg-zinc-500"></span>
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+                <div className="flex flex-wrap items-center gap-4 mt-auto pt-4">
+                  <a
+                    href={p.repo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-fill inline-flex items-center px-4 py-2 bg-transparent text-zinc-600 border border-zinc-400 rounded-md font-bold dark:text-zinc-300 dark:border-zinc-500"
+                  >
+                    View Repository
+                  </a>
+                  {p.demo && (
+                    <a
+                      href={p.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-zinc-500 font-bold hover:text-zinc-900 transition-colors dark:text-zinc-400 dark:hover:text-white"
+                    >
+                      Live URL
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                        className="w-4 h-4"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+                        />
+                      </svg>
+                    </a>
+                  )}
                 </div>
-                <h2 className="text-2xl font-bold text-slate-900 border-b border-slate-200 pb-2 mb-4 md:pr-12 w-fit dark:text-white dark:border-white/10">
-                  Web Loader
-                </h2>
-                <p className="text-slate-600 text-base mb-6 dark:text-slate-300">
-                  A mobile-friendly app for buying and managing data (GB) load.
-                  Users can submit orders and upload payment receipts, while
-                  admins track and manage everything in real time through a
-                  secure dashboard.
-                </p>
-                <a
-                  href="https://github.com/worriee/web-loaderbyjimzxworrie"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center px-4 py-2 bg-transparent text-blue-600 border border-blue-500 rounded-md hover:bg-blue-500 hover:text-white transition duration-300 font-bold dark:text-blue-300 dark:border-blue-400"
-                >
-                  View Repository
-                </a>
-              </div>
-
-              <div className="relative bg-white/80 backdrop-blur-md p-6 rounded-xl shadow-lg border border-slate-200 hover:shadow-blue-500/30 hover:border-blue-400 hover:-translate-y-1 transition-all duration-300 dark:bg-white/5 dark:border-white/10 dark:hover:shadow-blue-500/20 dark:hover:border-blue-500/50">
-                <div className="flex gap-2 mb-2 md:absolute md:top-6 md:right-6 md:mb-0">
-                  <span className="text-blue-600 font-bold text-sm tracking-wider dark:text-blue-300">
-                    REACT
-                  </span>
-                  <span className="text-blue-600 font-bold text-sm tracking-wider dark:text-blue-300">
-                    EXPRESS
-                  </span>
-                  <span className="text-blue-600 font-bold text-sm tracking-wider dark:text-blue-300">
-                    PWA
-                  </span>
-                </div>
-                <h2 className="text-2xl font-bold text-slate-900 border-b border-slate-200 pb-2 mb-4 md:pr-12 w-fit dark:text-white dark:border-white/10">
-                  TUON AI
-                </h2>
-                <p className="text-slate-600 text-base mb-6 dark:text-slate-300">
-                  An AI study companion that lets you chat with AI, generate
-                  notes on any topic, and test yourself with interactive
-                  quizzes. Supports multiple AI models.
-                </p>
-                <a
-                  href="https://github.com/worriee/quizmakerapp"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center px-4 py-2 bg-transparent text-blue-600 border border-blue-500 rounded-md hover:bg-blue-500 hover:text-white transition duration-300 font-bold dark:text-blue-300 dark:border-blue-400"
-                >
-                  View Repository
-                </a>
-              </div>
-            </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
@@ -563,7 +627,7 @@ export default function App() {
       <section id="contact" className="py-24 relative">
         <div className="max-w-6xl mx-auto px-6">
           <div ref={contactRef} className="reveal">
-            <h1 className="text-slate-900 font-bold font-serif text-4xl border-b-2 border-blue-500 dark:text-white">
+            <h1 className="text-slate-900 font-bold font-serif text-4xl border-b-2 border-zinc-400 dark:text-white">
               CONTACTS
             </h1>
             <div className="flex flex-col mt-10 space-y-6">
@@ -576,20 +640,22 @@ export default function App() {
                       className="h-7 w-7 object-contain dark:invert"
                     />
                   </div>
-                  {c.href ? (
-                    <a
-                      href={c.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-slate-900 font-bold text-lg md:text-xl hover:text-blue-600 hover:underline dark:text-white dark:hover:text-blue-300"
-                    >
-                      {c.label}
-                    </a>
-                  ) : (
-                    <h2 className="text-slate-800 font-bold text-lg md:text-xl dark:text-slate-200">
-                      {c.label}
-                    </h2>
-                  )}
+                  <div className="min-w-0">
+                    {c.href ? (
+                      <a
+                        href={c.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-slate-900 font-bold text-lg md:text-xl hover:text-zinc-900 hover:underline dark:text-white dark:hover:text-zinc-100"
+                      >
+                        {c.label}
+                      </a>
+                    ) : (
+                      <h2 className="text-slate-800 font-bold text-lg md:text-xl break-all dark:text-slate-200">
+                        {c.label}
+                      </h2>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>
@@ -599,44 +665,6 @@ export default function App() {
 
       <footer className="border-t border-slate-200 bg-white/70 backdrop-blur-xl dark:border-white/10 dark:bg-[#0a1022]/60">
         <div className="max-w-6xl mx-auto px-6 py-8">
-          <div className="flex justify-center space-x-6 mb-4">
-            <a
-              href="https://web.facebook.com/itzworrie"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Facebook"
-            >
-              <img
-                src={facebook}
-                alt="Facebook"
-                className="w-6 h-6 hover:scale-110 transition-transform cursor-pointer dark:invert"
-              />
-            </a>
-            <a
-              href="https://github.com/worriee"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
-            >
-              <img
-                src={github}
-                alt="GitHub"
-                className="w-6 h-6 hover:scale-110 transition-transform cursor-pointer dark:invert"
-              />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/julry-mahilum-91a47240a"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-            >
-              <img
-                src={linkedin}
-                alt="LinkedIn"
-                className="w-6 h-6 hover:scale-110 transition-transform cursor-pointer dark:invert"
-              />
-            </a>
-          </div>
           <p className="text-sm text-slate-500 text-center dark:text-slate-400">
             &copy; {new Date().getFullYear()} Julry Mahilum. <br /> All rights
             reserved.
@@ -685,7 +713,7 @@ export default function App() {
                 placeholder="Your Name"
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
-                className="w-full px-4 py-2.5 rounded-md bg-slate-100 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500 dark:bg-white/5 dark:border-white/10 dark:text-white dark:placeholder-slate-500"
+                className="w-full px-4 py-2.5 rounded-md bg-slate-100 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-zinc-400 dark:bg-white/5 dark:border-white/10 dark:text-white dark:placeholder-slate-500"
               />
               <input
                 type="email"
@@ -693,7 +721,7 @@ export default function App() {
                 placeholder="Your Email"
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
-                className="w-full px-4 py-2.5 rounded-md bg-slate-100 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500 dark:bg-white/5 dark:border-white/10 dark:text-white dark:placeholder-slate-500"
+                className="w-full px-4 py-2.5 rounded-md bg-slate-100 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-zinc-400 dark:bg-white/5 dark:border-white/10 dark:text-white dark:placeholder-slate-500"
               />
               <textarea
                 required
@@ -701,7 +729,7 @@ export default function App() {
                 placeholder="Your Message"
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
-                className="w-full px-4 py-2.5 rounded-md bg-slate-100 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500 resize-none dark:bg-white/5 dark:border-white/10 dark:text-white dark:placeholder-slate-500"
+                className="w-full px-4 py-2.5 rounded-md bg-slate-100 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-zinc-400 resize-none dark:bg-white/5 dark:border-white/10 dark:text-white dark:placeholder-slate-500"
               />
               {sendStatus === "sent" && (
                 <p className="text-green-400 font-semibold dark:text-green-200">
@@ -716,7 +744,7 @@ export default function App() {
               <button
                 type="submit"
                 disabled={sendStatus === "sending"}
-                className="w-full px-5 py-2.5 bg-blue-500 text-white rounded-md hover:bg-blue-400 transition duration-300 font-bold disabled:opacity-60"
+                className="w-full px-5 py-2.5 bg-zinc-700 text-white rounded-md hover:bg-zinc-600 transition duration-300 font-bold disabled:opacity-60"
               >
                 {sendStatus === "sending" ? "Sending..." : "Send Message"}
               </button>
