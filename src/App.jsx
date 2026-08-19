@@ -190,6 +190,48 @@ function useTypewriter(text) {
   return out;
 }
 
+function ThemeIcon({ dark }) {
+  return dark ? (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      className="h-5 w-5"
+    >
+      <circle cx="12" cy="12" r="4" />
+      <path
+        strokeLinecap="round"
+        d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4m11.4-11.4 1.4-1.4"
+      />
+    </svg>
+  ) : (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      className="h-5 w-5"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+      />
+    </svg>
+  );
+}
+
+function KeyChip({ k }) {
+  return (
+    <span className="h-6 min-w-6 px-1.5 rounded-md bg-white/70 border border-slate-200 text-slate-800 text-sm font-bold flex items-center justify-center mr-2 dark:bg-white/5 dark:border-white/10 dark:text-slate-200">
+      {k}
+    </span>
+  );
+}
+
 export default function App() {
   const [theme, setTheme] = useState(
     () => localStorage.getItem("theme") || "dark",
@@ -207,6 +249,36 @@ export default function App() {
   const aboutRef = useReveal();
   const contactRef = useReveal();
   const resumeRef = useRef(null);
+  const modalRef = useRef(null);
+  const nameInputRef = useRef(null);
+
+  useEffect(() => {
+    if (!isContactOpen) return;
+    document.body.style.overflow = "hidden";
+    const prevFocus = document.activeElement;
+    nameInputRef.current?.focus();
+    return () => {
+      document.body.style.overflow = "";
+      prevFocus?.focus?.();
+    };
+  }, [isContactOpen]);
+
+  const handleModalKeyDown = (e) => {
+    if (e.key !== "Tab") return;
+    const focusables = modalRef.current?.querySelectorAll(
+      "button, input, textarea, a[href]",
+    );
+    if (!focusables || focusables.length === 0) return;
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  };
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", theme === "dark");
@@ -235,11 +307,21 @@ export default function App() {
   useEffect(() => {
     const handleKey = (e) => {
       if (e.metaKey || e.ctrlKey || e.altKey) return;
+      if (e.key === "Escape") {
+        e.preventDefault();
+        setIsContactOpen(false);
+        setIsMenuOpen(false);
+        return;
+      }
       const tag = e.target.tagName;
       if (tag === "INPUT" || tag === "TEXTAREA") return;
-      if (e.key === "Escape") setIsContactOpen(false);
-      else if (e.key.toLowerCase() === "c") setIsContactOpen(true);
-      else if (e.key.toLowerCase() === "d") resumeRef.current?.click();
+      if (e.key.toLowerCase() === "c") {
+        e.preventDefault();
+        setIsContactOpen(true);
+      } else if (e.key.toLowerCase() === "d") {
+        e.preventDefault();
+        resumeRef.current?.click();
+      }
     };
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
@@ -280,23 +362,9 @@ export default function App() {
         aria-hidden="true"
       >
         <span className="flake"></span>
-        <span className="flake"></span>
-        <span className="flake"></span>
-        <span className="flake"></span>
-        <span className="flake"></span>
-        <span className="flake"></span>
-        <span className="flake"></span>
-        <span className="flake"></span>
-        <span className="flake"></span>
-        <span className="flake"></span>
-        <span className="flake"></span>
-        <span className="flake"></span>
-        <span className="flake"></span>
-        <span className="flake"></span>
-        <span className="flake"></span>
-        <span className="flake"></span>
-        <span className="flake"></span>
-        <span className="flake"></span>
+        {Array.from({ length: 25 }).map((_, i) => (
+          <span key={i} className="flake"></span>
+        ))}
       </div>
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -332,37 +400,7 @@ export default function App() {
               }
               className="p-2 rounded-md border border-slate-300 text-slate-700 bg-white/70 transition-colors dark:border-white/10 dark:text-white dark:bg-white/5"
             >
-              {theme === "dark" ? (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="h-5 w-5"
-                >
-                  <circle cx="12" cy="12" r="4" />
-                  <path
-                    strokeLinecap="round"
-                    d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4m11.4-11.4 1.4-1.4"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="h-5 w-5"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
-                  />
-                </svg>
-              )}
+              <ThemeIcon dark={theme === "dark"} />
             </button>
           </div>
 
@@ -372,42 +410,14 @@ export default function App() {
               aria-label="Toggle theme"
               className="p-2 rounded-md border border-slate-300 text-slate-700 bg-white/70 dark:border-white/10 dark:text-white dark:bg-white/5"
             >
-              {theme === "dark" ? (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="h-5 w-5"
-                >
-                  <circle cx="12" cy="12" r="4" />
-                  <path
-                    strokeLinecap="round"
-                    d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4m11.4-11.4 1.4-1.4"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="h-5 w-5"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
-                  />
-                </svg>
-              )}
+              <ThemeIcon dark={theme === "dark"} />
             </button>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-2 rounded-md border border-slate-300 text-slate-700 bg-white/70 dark:border-white/10 dark:text-white dark:bg-white/5"
               aria-label="Toggle menu"
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-menu"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -428,20 +438,30 @@ export default function App() {
         </div>
 
         {isMenuOpen && (
-          <div className="md:hidden mx-4 mb-4 rounded-xl bg-white/95 backdrop-blur-xl border border-slate-200 shadow-xl dark:bg-[#0a1022]/95 dark:border-white/10">
-            <div className="flex flex-col p-4 space-y-4">
-              {NAV_LINKS.map((link) => (
-                <a
-                  key={link}
-                  href={`#${link}`}
-                  onClick={() => setIsMenuOpen(false)}
-                  className={`nav-link text-lg capitalize ${activeLink === `#${link}` ? "active" : ""}`}
-                >
-                  {link === "contact" ? "Contacts" : link}
-                </a>
-              ))}
+          <>
+            <div
+              className="fixed inset-0 z-40"
+              onClick={() => setIsMenuOpen(false)}
+              aria-hidden="true"
+            />
+            <div
+              id="mobile-menu"
+              className="md:hidden mx-4 mb-4 rounded-xl bg-white/95 backdrop-blur-xl border border-slate-200 shadow-xl dark:bg-[#0a1022]/95 dark:border-white/10"
+            >
+              <div className="flex flex-col p-4 space-y-4">
+                {NAV_LINKS.map((link) => (
+                  <a
+                    key={link}
+                    href={`#${link}`}
+                    onClick={() => setIsMenuOpen(false)}
+                    className={`nav-link text-lg capitalize ${activeLink === `#${link}` ? "active" : ""}`}
+                  >
+                    {link === "contact" ? "Contacts" : link}
+                  </a>
+                ))}
+              </div>
             </div>
-          </div>
+          </>
         )}
       </nav>
 
@@ -465,7 +485,7 @@ export default function App() {
             />
             <div className="text-center md:text-left">
               <h2 className="mt-3 text-zinc-600 font-semibold text-lg dark:text-zinc-300">
-                AI Integration Developer
+                Full Stack Developer - AI Integration
               </h2>
               <h1 className="gradient-text font-bold font-serif text-4xl md:text-5xl mt-2 min-h-[3rem] md:min-h-[3.5rem]">
                 {heroText || "\u00A0"}
@@ -475,9 +495,7 @@ export default function App() {
                   onClick={() => setIsContactOpen(true)}
                   className="btn-fill flex items-center justify-center w-full sm:w-auto px-5 py-2.5 bg-transparent text-zinc-600 border border-zinc-400 rounded-md font-bold dark:text-zinc-300 dark:border-zinc-500"
                 >
-                  <span className="h-6 w-6 rounded-md bg-white/70 border border-slate-200 text-slate-800 text-sm font-bold flex items-center justify-center mr-2 dark:bg-white/5 dark:border-white/10 dark:text-slate-200">
-                    C
-                  </span>
+                  <KeyChip k="C" />
                   Contact Me
                 </button>
                 <a
@@ -486,9 +504,7 @@ export default function App() {
                   download
                   className="btn-fill flex items-center justify-center w-full sm:w-auto px-5 py-2.5 bg-transparent text-zinc-600 border border-zinc-400 rounded-md font-bold dark:text-zinc-300 dark:border-zinc-500"
                 >
-                  <span className="h-6 w-6 rounded-md bg-white/70 border border-slate-200 text-slate-800 text-sm font-bold flex items-center justify-center mr-2 dark:bg-white/5 dark:border-white/10 dark:text-slate-200">
-                    D
-                  </span>
+                  <KeyChip k="D" />
                   Download Resume
                 </a>
               </div>
@@ -514,7 +530,7 @@ export default function App() {
                     {group.items.map((item) => (
                       <span
                         key={item}
-                        className="px-4 py-1.5 rounded-full text-sm font-semibold bg-white/70 border border-slate-200 text-slate-800 hover:bg-zinc-300 hover:text-black hover:scale-105 transition-all duration-200 dark:bg-white/5 dark:border-white/10 dark:text-slate-200 dark:hover:bg-zinc-300 dark:hover:text-black"
+                        className="px-4 py-1.5 rounded-full text-sm font-semibold bg-white/70 border border-slate-200 text-slate-800 transition-all duration-200 dark:bg-white/5 dark:border-white/10 dark:text-slate-200"
                       >
                         {item}
                       </span>
@@ -534,14 +550,24 @@ export default function App() {
               ABOUT ME
             </h1>
             <h2 className="text-xl md:text-2xl text-slate-700 mt-8 leading-relaxed max-w-3xl dark:text-slate-300">
-              My tech journey started in 2020 during the pandemic. I wanted to
-              build my own VPN app to get better internet access, and that
-              curiosity got me hooked on mobile development. Later in college, I
-              expanded into web development. Nowadays, I heavily use AI tools
-              and automated agentic workflows to learn fast and keep up with new
-              technology. I combine web and mobile development with AI
-              integrations to build practical tools and apps that solve real
-              problems.
+              <p>
+                My tech journey started in 2020 during the pandemic, when
+                curiosity about how apps work pulled me into mobile development.
+                In college, I expanded into web development. Nowadays, I build
+                full-stack web and Android apps with AI integrated real projects
+                with real users.
+              </p>
+              <p>
+                I integrate AI model APIs: Gemini, GLM, and any
+                OpenAI-compatible provider directly into products. I also built
+                my own AI coding workflow tools, UVE Workflow and Pi-Worrie. I
+                use them heavily to ship faster while learning.
+              </p>
+              <p>
+                I haven't done an internship yet, instead I learn by building
+                production-style apps end to end: auth, databases, rate
+                limiting, and deployment.
+              </p>
             </h2>
           </div>
         </div>
@@ -678,36 +704,45 @@ export default function App() {
           onClick={() => setIsContactOpen(false)}
         >
           <div
+            ref={modalRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Contact Me"
             className="w-full max-w-md bg-white rounded-2xl shadow-2xl border border-slate-200 dark:bg-[#0a1022] dark:border-white/10"
             onClick={(e) => e.stopPropagation()}
+            onKeyDown={handleModalKeyDown}
           >
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 dark:border-white/10">
               <h2 className="text-xl font-bold text-slate-900 dark:text-white">
                 Contact Me
               </h2>
-              <button
-                onClick={() => setIsContactOpen(false)}
-                aria-label="Close"
-                className="p-1 rounded-md text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={2}
-                  stroke="currentColor"
-                  className="h-6 w-6"
+              <div className="flex items-center gap-1">
+                <KeyChip k="esc" />
+                <button
+                  onClick={() => setIsContactOpen(false)}
+                  aria-label="Close"
+                  className="p-1 rounded-md text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6 18 18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={2}
+                    stroke="currentColor"
+                    className="h-6 w-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M6 18 18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              </div>
             </div>
             <form onSubmit={handleSend} className="px-6 py-5 space-y-4">
               <input
+                ref={nameInputRef}
                 type="text"
                 required
                 placeholder="Your Name"
@@ -718,7 +753,7 @@ export default function App() {
               <input
                 type="email"
                 required
-                placeholder="Your Email"
+                placeholder="Email"
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
                 className="w-full px-4 py-2.5 rounded-md bg-slate-100 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-zinc-400 dark:bg-white/5 dark:border-white/10 dark:text-white dark:placeholder-slate-500"
@@ -726,7 +761,7 @@ export default function App() {
               <textarea
                 required
                 rows={4}
-                placeholder="Your Message"
+                placeholder="What's this about?"
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
                 className="w-full px-4 py-2.5 rounded-md bg-slate-100 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-zinc-400 resize-none dark:bg-white/5 dark:border-white/10 dark:text-white dark:placeholder-slate-500"

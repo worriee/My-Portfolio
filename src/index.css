@@ -1,200 +1,427 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "JetBrains Mono", ui-monospace, monospace;
-  --font-serif: "JetBrains Mono", ui-monospace, monospace;
+    --font-sans: "JetBrains Mono", ui-monospace, monospace;
+    --font-serif: "JetBrains Mono", ui-monospace, monospace;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 body {
-  background-color: #f8fafc;
-  color: #0f172a;
+    background-color: #f8fafc;
+    color: #0f172a;
 }
 
 .dark body {
-  background-color: #050816;
-  color: #f1f5f9;
+    background-color: #050816;
+    color: #f1f5f9;
 }
 
 .gradient-text {
-  background: linear-gradient(90deg, #52525b, #71717a, #a1a1aa);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+    background: linear-gradient(90deg, #52525b, #71717a, #a1a1aa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
 .dark .gradient-text {
-  background: linear-gradient(90deg, #a1a1aa, #e4e4e7, #fafafa);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+    background: linear-gradient(90deg, #a1a1aa, #e4e4e7, #fafafa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
 .orb {
-  position: absolute;
-  border-radius: 9999px;
-  filter: blur(90px);
-  opacity: 0.35;
-  pointer-events: none;
-  animation: float 14s ease-in-out infinite;
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(90px);
+    opacity: 0.35;
+    pointer-events: none;
+    animation: float 14s ease-in-out infinite;
 }
 
 .dark .orb {
-  opacity: 0.45;
+    opacity: 0.45;
 }
 
 @keyframes float {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    transform: translate(30px, -30px) scale(1.15);
-  }
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(30px, -30px) scale(1.15);
+    }
 }
 
 .reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
 }
 
 .reveal.visible {
-  opacity: 1;
-  transform: none;
+    opacity: 1;
+    transform: none;
 }
 
 .nav-link {
-  position: relative;
-  color: #475569;
-  transition: color 0.3s ease;
+    position: relative;
+    color: #475569;
+    transition: color 0.3s ease;
 }
 
 .nav-link::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -4px;
-  height: 2px;
-  width: 100%;
-  background: linear-gradient(90deg, #a1a1aa, #ffffff);
-  border-radius: 2px;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease;
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    height: 2px;
+    width: 100%;
+    background: linear-gradient(90deg, #a1a1aa, #ffffff);
+    border-radius: 2px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
 }
 
 .nav-link:hover {
-  color: #0f172a;
+    color: #0f172a;
 }
 
 .dark .nav-link {
-  color: #94a3b8;
+    color: #94a3b8;
 }
 
 .dark .nav-link:hover,
 .dark .nav-link.active {
-  color: #ffffff;
+    color: #ffffff;
 }
 
 .nav-link.active {
-  color: #0f172a;
+    color: #0f172a;
 }
 
 .nav-link.active::after {
-  transform: scaleX(1);
+    transform: scaleX(1);
 }
 
 .btn-fill {
-  background-image: linear-gradient(90deg, #a1a1aa 50%, transparent 50%);
-  background-size: 200% 100%;
-  background-position: right;
-  background-repeat: no-repeat;
-  transition:
-    background-position 0.4s ease,
-    color 0.3s ease;
+    background-image: linear-gradient(90deg, #a1a1aa 50%, transparent 50%);
+    background-size: 200% 100%;
+    background-position: right;
+    background-repeat: no-repeat;
+    transition:
+        background-position 0.4s ease,
+        color 0.3s ease;
 }
 
 .btn-fill:hover {
-  background-position: left;
-  color: #ffffff;
+    background-position: left;
+    color: #ffffff;
 }
 
 .flake {
-  position: absolute;
-  border-radius: 9999px;
-  background-color: #cbd5e1;
-  opacity: 0.35;
-  pointer-events: none;
-  animation: flake-up linear infinite;
+    position: absolute;
+    border-radius: 9999px;
+    background-color: #3f3f46;
+    pointer-events: none;
+    animation: flake-up linear infinite;
 }
 
 .dark .flake {
-  background-color: #ffffff;
+    background-color: #ffffff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    .flake,
+    .orb {
+        animation: none;
+    }
+    .flake {
+        opacity: 0.15;
+    }
+    .reveal,
+    .btn-fill,
+    .nav-link,
+    .nav-link::after {
+        transition: none;
+    }
 }
 
 @keyframes flake-up {
-  0% {
-    transform: translate(0, 0);
-    opacity: 0.35;
-  }
-  85% {
-    opacity: 0.15;
-  }
-  100% {
-    transform: translate(40px, -110vh);
-    opacity: 0;
-  }
+    0% {
+        transform: translate(0, 0);
+        opacity: 0.5;
+    }
+    85% {
+        opacity: 0.25;
+    }
+    100% {
+        transform: translate(40px, -110vh);
+        opacity: 0;
+    }
 }
 
 @keyframes flake-down {
-  0% {
-    transform: translate(0, 0);
-    opacity: 0.35;
-  }
-  85% {
-    opacity: 0.15;
-  }
-  100% {
-    transform: translate(-45px, 110vh);
-    opacity: 0;
-  }
+    0% {
+        transform: translate(0, 0);
+        opacity: 0.5;
+    }
+    85% {
+        opacity: 0.25;
+    }
+    100% {
+        transform: translate(-45px, 110vh);
+        opacity: 0;
+    }
 }
 
 @keyframes flake-side {
-  0% {
-    transform: translate(0, 0);
-    opacity: 0.35;
-  }
-  85% {
-    opacity: 0.15;
-  }
-  100% {
-    transform: translate(60px, -85vh);
-    opacity: 0;
-  }
+    0% {
+        transform: translate(0, 0);
+        opacity: 0.5;
+    }
+    85% {
+        opacity: 0.25;
+    }
+    100% {
+        transform: translate(60px, -85vh);
+        opacity: 0;
+    }
 }
 
-.flake:nth-child(1) { left: 4%;  top: 95%; width: 3px; height: 3px; animation-duration: 12s; animation-delay: 0s; }
-.flake:nth-child(2) { left: 12%; top: 110%; width: 4px; height: 4px; animation-duration: 15s; animation-delay: 2s; animation-name: flake-side; }
-.flake:nth-child(3) { left: 20%; top: 88%; width: 2px; height: 2px; animation-duration: 10s; animation-delay: 4s; }
-.flake:nth-child(4) { left: 28%; top: 100%; width: 5px; height: 5px; animation-duration: 18s; animation-delay: 1s; animation-name: flake-down; }
-.flake:nth-child(5) { left: 36%; top: 92%; width: 3px; height: 3px; animation-duration: 13s; animation-delay: 5s; animation-name: flake-side; }
-.flake:nth-child(6) { left: 44%; top: 105%; width: 2px; height: 2px; animation-duration: 9s; animation-delay: 0s; }
-.flake:nth-child(7) { left: 52%; top: 90%; width: 4px; height: 4px; animation-duration: 16s; animation-delay: 3s; }
-.flake:nth-child(8) { left: 60%; top: 98%; width: 3px; height: 3px; animation-duration: 11s; animation-delay: 6s; animation-name: flake-down; }
-.flake:nth-child(9) { left: 68%; top: 108%; width: 5px; height: 5px; animation-duration: 14s; animation-delay: 1s; animation-name: flake-side; }
-.flake:nth-child(10) { left: 76%; top: 86%; width: 2px; height: 2px; animation-duration: 12s; animation-delay: 4s; }
-.flake:nth-child(11) { left: 84%; top: 96%; width: 3px; height: 3px; animation-duration: 17s; animation-delay: 2s; }
-.flake:nth-child(12) { left: 92%; top: 102%; width: 4px; height: 4px; animation-duration: 10s; animation-delay: 5s; animation-name: flake-down; }
-.flake:nth-child(13) { left: 8%;  top: 102%; width: 2px; height: 2px; animation-duration: 14s; animation-delay: 7s; animation-name: flake-side; }
-.flake:nth-child(14) { left: 30%; top: 112%; width: 3px; height: 3px; animation-duration: 11s; animation-delay: 3s; animation-name: flake-down; }
-.flake:nth-child(15) { left: 50%; top: 94%; width: 2px; height: 2px; animation-duration: 13s; animation-delay: 8s; animation-name: flake-side; }
-.flake:nth-child(16) { left: 66%; top: 104%; width: 4px; height: 4px; animation-duration: 15s; animation-delay: 0s; animation-name: flake-down; }
-.flake:nth-child(17) { left: 88%; top: 94%; width: 2px; height: 2px; animation-duration: 12s; animation-delay: 6s; }
-.flake:nth-child(18) { left: 48%; top: 115%; width: 3px; height: 3px; animation-duration: 16s; animation-delay: 2s; }
+.flake:nth-child(1) {
+    left: 4%;
+    top: 95%;
+    width: 3px;
+    height: 3px;
+    animation-duration: 12s;
+    animation-delay: 0s;
+}
+.flake:nth-child(2) {
+    left: 12%;
+    top: 110%;
+    width: 4px;
+    height: 4px;
+    animation-duration: 15s;
+    animation-delay: 2s;
+    animation-name: flake-side;
+}
+.flake:nth-child(3) {
+    left: 20%;
+    top: 88%;
+    width: 2px;
+    height: 2px;
+    animation-duration: 10s;
+    animation-delay: 4s;
+}
+.flake:nth-child(4) {
+    left: 28%;
+    top: 100%;
+    width: 5px;
+    height: 5px;
+    animation-duration: 18s;
+    animation-delay: 1s;
+    animation-name: flake-down;
+}
+.flake:nth-child(5) {
+    left: 36%;
+    top: 92%;
+    width: 3px;
+    height: 3px;
+    animation-duration: 13s;
+    animation-delay: 5s;
+    animation-name: flake-side;
+}
+.flake:nth-child(6) {
+    left: 44%;
+    top: 105%;
+    width: 2px;
+    height: 2px;
+    animation-duration: 9s;
+    animation-delay: 0s;
+}
+.flake:nth-child(7) {
+    left: 52%;
+    top: 90%;
+    width: 4px;
+    height: 4px;
+    animation-duration: 16s;
+    animation-delay: 3s;
+}
+.flake:nth-child(8) {
+    left: 60%;
+    top: 98%;
+    width: 3px;
+    height: 3px;
+    animation-duration: 11s;
+    animation-delay: 6s;
+    animation-name: flake-down;
+}
+.flake:nth-child(9) {
+    left: 68%;
+    top: 108%;
+    width: 5px;
+    height: 5px;
+    animation-duration: 14s;
+    animation-delay: 1s;
+    animation-name: flake-side;
+}
+.flake:nth-child(10) {
+    left: 76%;
+    top: 86%;
+    width: 2px;
+    height: 2px;
+    animation-duration: 12s;
+    animation-delay: 4s;
+}
+.flake:nth-child(11) {
+    left: 84%;
+    top: 96%;
+    width: 3px;
+    height: 3px;
+    animation-duration: 17s;
+    animation-delay: 2s;
+}
+.flake:nth-child(12) {
+    left: 92%;
+    top: 102%;
+    width: 4px;
+    height: 4px;
+    animation-duration: 10s;
+    animation-delay: 5s;
+    animation-name: flake-down;
+}
+.flake:nth-child(13) {
+    left: 8%;
+    top: 102%;
+    width: 2px;
+    height: 2px;
+    animation-duration: 14s;
+    animation-delay: 7s;
+    animation-name: flake-side;
+}
+.flake:nth-child(14) {
+    left: 30%;
+    top: 112%;
+    width: 3px;
+    height: 3px;
+    animation-duration: 11s;
+    animation-delay: 3s;
+    animation-name: flake-down;
+}
+.flake:nth-child(15) {
+    left: 50%;
+    top: 94%;
+    width: 2px;
+    height: 2px;
+    animation-duration: 13s;
+    animation-delay: 8s;
+    animation-name: flake-side;
+}
+.flake:nth-child(16) {
+    left: 66%;
+    top: 104%;
+    width: 4px;
+    height: 4px;
+    animation-duration: 15s;
+    animation-delay: 0s;
+    animation-name: flake-down;
+}
+.flake:nth-child(17) {
+    left: 88%;
+    top: 94%;
+    width: 2px;
+    height: 2px;
+    animation-duration: 12s;
+    animation-delay: 6s;
+}
+.flake:nth-child(18) {
+    left: 48%;
+    top: 115%;
+    width: 3px;
+    height: 3px;
+    animation-duration: 16s;
+    animation-delay: 2s;
+}
+.flake:nth-child(19) {
+    left: 16%;
+    top: 96%;
+    width: 5px;
+    height: 5px;
+    animation-duration: 14s;
+    animation-delay: 4s;
+    animation-name: flake-side;
+}
+.flake:nth-child(20) {
+    left: 58%;
+    top: 108%;
+    width: 2px;
+    height: 2px;
+    animation-duration: 11s;
+    animation-delay: 7s;
+    animation-name: flake-down;
+}
+.flake:nth-child(21) {
+    left: 72%;
+    top: 90%;
+    width: 4px;
+    height: 4px;
+    animation-duration: 17s;
+    animation-delay: 1s;
+    animation-name: flake-side;
+}
+.flake:nth-child(22) {
+    left: 24%;
+    top: 112%;
+    width: 3px;
+    height: 3px;
+    animation-duration: 12s;
+    animation-delay: 5s;
+    animation-name: flake-down;
+}
+.flake:nth-child(23) {
+    left: 40%;
+    top: 92%;
+    width: 5px;
+    height: 5px;
+    animation-duration: 15s;
+    animation-delay: 0s;
+    animation-name: flake-side;
+}
+.flake:nth-child(24) {
+    left: 80%;
+    top: 106%;
+    width: 3px;
+    height: 3px;
+    animation-duration: 13s;
+    animation-delay: 6s;
+    animation-name: flake-down;
+}
+.flake:nth-child(25) {
+    left: 6%;
+    top: 100%;
+    width: 4px;
+    height: 4px;
+    animation-duration: 18s;
+    animation-delay: 3s;
+}
+.flake:nth-child(26) {
+    left: 92%;
+    top: 98%;
+    width: 2px;
+    height: 2px;
+    animation-duration: 10s;
+    animation-delay: 8s;
+    animation-name: flake-side;
+}
