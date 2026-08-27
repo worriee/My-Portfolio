@@ -128,7 +128,7 @@ const CONTACTS = [
   {
     src: facebook,
     label: "Julry Mahilum",
-    href: "https://web.facebook.com/itzworrie",
+    href: "https://web.facebook.com/profile.php?id=61594069880193",
   },
   {
     src: insta,
@@ -562,11 +562,6 @@ export default function App() {
                 OpenAI-compatible provider directly into products. I also built
                 my own AI coding workflow tools, UVE Workflow and Pi-Worrie. I
                 use them heavily to ship faster while learning.
-              </p>
-              <p>
-                I haven't done an internship yet, instead I learn by building
-                production-style apps end to end: auth, databases, rate
-                limiting, and deployment.
               </p>
             </h2>
           </div>
