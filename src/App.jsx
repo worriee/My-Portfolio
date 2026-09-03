@@ -25,7 +25,7 @@ const SKILL_GROUPS = [
     ],
   },
   {
-    title: "TOOLS & PLATFORMS",
+    title: "TOOLS / PLATFORMS",
     items: [
       "Git",
       "GitHub",
@@ -41,7 +41,7 @@ const SKILL_GROUPS = [
     ],
   },
   {
-    title: "AI & WORKFLOW",
+    title: "AI / WORKFLOW",
     items: ["Deepseek", "GLM", "Kimi", "OpenCode CLI", "Pi"],
   },
 ];
@@ -485,7 +485,7 @@ export default function App() {
             />
             <div className="text-center md:text-left">
               <h2 className="mt-3 text-zinc-600 font-semibold text-lg dark:text-zinc-300">
-                Full Stack Developer - AI Integration
+                Full Stack - AI Software Integration
               </h2>
               <h1 className="gradient-text font-bold font-serif text-4xl md:text-5xl mt-2 min-h-[3rem] md:min-h-[3.5rem]">
                 {heroText || "\u00A0"}
@@ -553,15 +553,14 @@ export default function App() {
               <p>
                 My tech journey started in 2020 during the pandemic, when
                 curiosity about how apps work pulled me into mobile development.
-                In college, I expanded into web development. Nowadays, I build
-                full-stack web and Android apps with AI integrated real projects
-                with real users.
+                In college, I expanded into web development. Nowadays, I make
+                full-stack web and mobile apps (PWA) with AI integration.
               </p>
               <p>
                 I integrate AI model APIs: Gemini, GLM, and any
                 OpenAI-compatible provider directly into products. I also built
-                my own AI coding workflow tools, UVE Workflow and Pi-Worrie. I
-                use them heavily to ship faster while learning.
+                my workflow tools (eg. uveworkflow, pi-worrie). I use them
+                heavily to ship faster while learning.
               </p>
             </h2>
           </div>
@@ -687,8 +686,7 @@ export default function App() {
       <footer className="border-t border-slate-200 bg-white/70 backdrop-blur-xl dark:border-white/10 dark:bg-[#0a1022]/60">
         <div className="max-w-6xl mx-auto px-6 py-8">
           <p className="text-sm text-slate-500 text-center dark:text-slate-400">
-            &copy; {new Date().getFullYear()} Julry Mahilum. <br /> All rights
-            reserved.
+            &copy; {new Date().getFullYear()} JulryM x Worrie
           </p>
         </div>
       </footer>
