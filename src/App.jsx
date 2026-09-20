@@ -485,7 +485,7 @@ export default function App() {
             />
             <div className="text-center md:text-left">
               <h2 className="mt-3 text-zinc-600 font-semibold text-lg dark:text-zinc-300">
-                Full Stack - AI Software Integration
+                Full Stack | AI Software Integration
               </h2>
               <h1 className="gradient-text font-bold font-serif text-4xl md:text-5xl mt-2 min-h-[3rem] md:min-h-[3.5rem]">
                 {heroText || "\u00A0"}
@@ -551,16 +551,11 @@ export default function App() {
             </h1>
             <h2 className="text-xl md:text-2xl text-slate-700 mt-8 leading-relaxed max-w-3xl dark:text-slate-300">
               <p>
-                My tech journey started in 2020 during the pandemic, when
-                curiosity about how apps work pulled me into mobile development.
-                In college, I expanded into web development. Nowadays, I make
-                full-stack web and mobile apps (PWA) with AI integration.
-              </p>
-              <p>
-                I integrate AI model APIs: Gemini, GLM, and any
-                OpenAI-compatible provider directly into products. I also built
-                my workflow tools (eg. uveworkflow, pi-worrie). I use them
-                heavily to ship faster while learning.
+                I make full-stack web and mobile apps (PWA) with AI integration.
+                I integrate AI model APIs: Gemini or any OpenAI-compatible
+                provider directly into products. I also built my workflow tools
+                (eg. uveworkflow, pi-worrie). I use them heavily to ship faster
+                while learning.
               </p>
             </h2>
           </div>
