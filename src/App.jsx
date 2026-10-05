@@ -249,6 +249,7 @@ export default function App() {
   const aboutRef = useReveal();
   const contactRef = useReveal();
   const resumeRef = useRef(null);
+  const progressRef = useRef(null);
   const modalRef = useRef(null);
   const nameInputRef = useRef(null);
 
@@ -297,6 +298,11 @@ export default function App() {
       }
       setActiveLink(currentSection);
       setScrolled(window.scrollY > 40);
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      if (progressRef.current) {
+        progressRef.current.style.width =
+          (max > 0 ? (window.scrollY / max) * 100 : 0) + "%";
+      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -463,6 +469,17 @@ export default function App() {
             </div>
           </>
         )}
+
+        <div
+          className="absolute bottom-0 left-0 h-0.5 w-full bg-slate-300 dark:bg-white/20"
+          aria-hidden="true"
+        >
+          <div
+            ref={progressRef}
+            className="h-full progress-fill"
+            style={{ width: "0%" }}
+          ></div>
+        </div>
       </nav>
 
       <section
@@ -485,7 +502,7 @@ export default function App() {
             />
             <div className="text-center md:text-left">
               <h2 className="mt-3 text-zinc-600 font-semibold text-lg dark:text-zinc-300">
-                Full Stack | AI Software Integration
+                Aspiring AI Automation Engineer
               </h2>
               <h1 className="gradient-text font-bold font-serif text-4xl md:text-5xl mt-2 min-h-[3rem] md:min-h-[3.5rem]">
                 {heroText || "\u00A0"}
@@ -493,7 +510,7 @@ export default function App() {
               <div className="flex flex-col sm:flex-row mt-8 space-y-3 sm:space-y-0 sm:space-x-4 justify-center md:justify-start">
                 <button
                   onClick={() => setIsContactOpen(true)}
-                  className="btn-fill flex items-center justify-center w-full sm:w-auto px-5 py-2.5 bg-transparent text-zinc-600 border border-zinc-400 rounded-md font-bold dark:text-zinc-300 dark:border-zinc-500"
+                  className="flex items-center justify-center w-full sm:w-auto px-5 py-2.5 bg-transparent text-zinc-600 border border-zinc-400 rounded-md font-bold hover:bg-[#a1a1aa] hover:text-white dark:text-zinc-300 dark:border-zinc-500"
                 >
                   <KeyChip k="C" />
                   Contact Me
@@ -502,7 +519,7 @@ export default function App() {
                   ref={resumeRef}
                   href="/Mahilum_Resume.pdf"
                   download
-                  className="btn-fill flex items-center justify-center w-full sm:w-auto px-5 py-2.5 bg-transparent text-zinc-600 border border-zinc-400 rounded-md font-bold dark:text-zinc-300 dark:border-zinc-500"
+                  className="flex items-center justify-center w-full sm:w-auto px-5 py-2.5 bg-transparent text-zinc-600 border border-zinc-400 rounded-md font-bold hover:bg-[#a1a1aa] hover:text-white dark:text-zinc-300 dark:border-zinc-500"
                 >
                   <KeyChip k="D" />
                   Download Resume
@@ -511,6 +528,34 @@ export default function App() {
             </div>
           </div>
         </div>
+
+        <button
+          type="button"
+          onClick={() =>
+            document
+              .getElementById("tech")
+              .scrollIntoView({ behavior: "smooth" })
+          }
+          aria-label="Scroll to skills section"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 p-2 text-zinc-500 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-white"
+        >
+          <span className="arrow-bob block">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="h-6 w-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+              />
+            </svg>
+          </span>
+        </button>
       </section>
 
       <section id="tech" className="py-24 relative">
@@ -553,7 +598,7 @@ export default function App() {
               <p>
                 I make full-stack web and mobile apps (PWA) with AI integration.
                 I integrate AI model APIs: Gemini or any OpenAI-compatible
-                provider directly into products. I also built my workflow tools
+                provider directly into products. I created my workflow tools
                 (eg. uveworkflow, pi-worrie). I use them heavily to ship faster
                 while learning.
               </p>
@@ -604,7 +649,7 @@ export default function App() {
                     href={p.repo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-fill inline-flex items-center px-4 py-2 bg-transparent text-zinc-600 border border-zinc-400 rounded-md font-bold dark:text-zinc-300 dark:border-zinc-500"
+                    className="inline-flex items-center px-4 py-2 bg-transparent text-zinc-600 border border-zinc-400 rounded-md font-bold hover:bg-[#a1a1aa] hover:text-white dark:text-zinc-300 dark:border-zinc-500"
                   >
                     View Repository
                   </a>
